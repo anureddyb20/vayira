@@ -6,7 +6,7 @@
 }
 
 /* ============================================================ */
-/* 1. OPENING PAGE (THE ROYAL REVEAL SCREEN)                    */
+/* STEP 1: OPENING PAGE (THE ROYAL REVEAL SCREEN)               */
 /* ============================================================ */
 .revealScreen {
   position: fixed;
@@ -39,14 +39,14 @@
 
 .curtainLeft {
   left: 0;
-  background-image: linear-gradient(to right, rgba(16, 2, 6, 0.8), rgba(43, 10, 19, 0.25)), url('/images/atelier-silk.jpg');
+  background-image: linear-gradient(to right, rgba(16, 2, 6, 0.82), rgba(43, 10, 19, 0.25)), url('/images/atelier-silk.jpg');
   box-shadow: 20px 0 60px rgba(0, 0, 0, 0.9);
   border-right: 1px solid rgba(180, 154, 97, 0.5);
 }
 
 .curtainRight {
   right: 0;
-  background-image: linear-gradient(to left, rgba(16, 2, 6, 0.8), rgba(43, 10, 19, 0.25)), url('/images/atelier-silk.jpg');
+  background-image: linear-gradient(to left, rgba(16, 2, 6, 0.82), rgba(43, 10, 19, 0.25)), url('/images/atelier-silk.jpg');
   background-position: right center;
   box-shadow: -20px 0 60px rgba(0, 0, 0, 0.9);
   border-left: 1px solid rgba(180, 154, 97, 0.5);
@@ -76,11 +76,11 @@
   position: relative;
   z-index: 4;
   text-align: center;
-  padding: 3rem 2.5rem;
-  max-width: 680px;
-  background: radial-gradient(circle at center, rgba(32, 7, 15, 0.9) 0%, rgba(18, 4, 8, 0.7) 70%, transparent 100%);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  padding: 3.5rem 3rem;
+  max-width: 720px;
+  background: radial-gradient(circle at center, rgba(32, 7, 15, 0.92) 0%, rgba(18, 4, 8, 0.8) 70%, transparent 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(180, 154, 97, 0.4);
   border-radius: 4px;
   box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95), 0 0 50px rgba(180, 154, 97, 0.25);
@@ -105,7 +105,7 @@
 
 .brandTitle {
   font-family: var(--font-serif);
-  font-size: clamp(2.8rem, 7vw, 4.5rem);
+  font-size: clamp(2.8rem, 7vw, 4.6rem);
   font-weight: 700;
   letter-spacing: 0.28em;
   color: var(--color-gold);
@@ -128,7 +128,7 @@
 .brandQuote {
   font-family: var(--font-sans);
   font-size: 0.88rem;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--color-stone);
   margin-bottom: 2.25rem;
@@ -141,12 +141,28 @@
 }
 
 /* ============================================================ */
-/* 2. INTRODUCTION & DEMO SIGN-IN PAGE                          */
+/* STEP 2: INTRODUCTION ABOUT VAYIRA PAGE                       */
 /* ============================================================ */
 .introScreen {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.introHeader {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(18, 4, 9, 0.95);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(180, 154, 97, 0.2);
+  padding: 0.85rem 0;
+}
+
+.introHeaderInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .introHero {
@@ -155,7 +171,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: calc(var(--header-height) + 4rem) 1.5rem 6rem;
+  padding: 5rem 1.5rem 6rem;
 }
 
 .introHeroBg {
@@ -169,9 +185,9 @@
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(22, 5, 11, 0.5) 0%,
-    rgba(18, 4, 9, 0.75) 50%,
-    rgba(14, 2, 6, 0.97) 100%
+    rgba(22, 5, 11, 0.55) 0%,
+    rgba(18, 4, 9, 0.8) 50%,
+    rgba(14, 2, 6, 0.98) 100%
   );
   z-index: 2;
 }
@@ -180,7 +196,7 @@
   position: relative;
   z-index: 10;
   text-align: center;
-  max-width: 920px;
+  max-width: 960px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -188,7 +204,7 @@
 
 .heroHeading {
   font-family: var(--font-serif);
-  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-size: clamp(3.2rem, 8vw, 5.5rem);
   letter-spacing: 0.24em;
   font-weight: 700;
   color: var(--color-gold);
@@ -202,68 +218,143 @@
 .heroSubheading {
   font-family: var(--font-editorial);
   font-style: italic;
-  font-size: clamp(1.2rem, 3vw, 1.75rem);
+  font-size: clamp(1.25rem, 3vw, 1.8rem);
   color: var(--color-champagne);
   margin-bottom: 1.5rem;
 }
 
 .heroPhilosophy {
   font-family: var(--font-editorial);
-  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  font-size: clamp(1.35rem, 2.5vw, 1.9rem);
   font-style: italic;
   color: var(--color-ivory);
   margin-bottom: 1.75rem;
 }
 
 .introStoryBox {
-  max-width: 720px;
-  margin: 0 auto 3.5rem;
-  padding: 1.75rem 2rem;
-  background: rgba(32, 7, 15, 0.65);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(180, 154, 97, 0.25);
+  max-width: 760px;
+  margin: 0 auto 3rem;
+  padding: 2rem 2.25rem;
+  background: rgba(32, 7, 15, 0.7);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(180, 154, 97, 0.3);
   border-radius: 4px;
-  line-height: 1.75;
+  line-height: 1.8;
   font-family: var(--font-sans);
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   color: var(--color-stone-light);
+  text-align: left;
 }
 
-.signInCard {
+.pillarsIntroGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
   width: 100%;
-  background: rgba(32, 7, 15, 0.85);
-  backdrop-filter: blur(16px);
+  margin-bottom: 3.5rem;
+  text-align: left;
+}
+
+.pillarCard {
+  background: rgba(22, 5, 11, 0.75);
+  border: 1px solid rgba(180, 154, 97, 0.25);
+  border-radius: 4px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: all var(--transition-fast);
+}
+
+.pillarCard:hover {
+  border-color: var(--color-gold);
+  background: rgba(34, 8, 17, 0.85);
+  transform: translateY(-3px);
+}
+
+.pillarCard h4 {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: var(--color-ivory);
+  letter-spacing: 0.05em;
+}
+
+.pillarCard p {
+  font-size: 0.82rem;
+  color: var(--color-stone);
+  line-height: 1.5;
+}
+
+.introCtaBox {
+  background: radial-gradient(circle at center, rgba(45, 11, 22, 0.9) 0%, rgba(22, 5, 11, 0.8) 100%);
   border: 1px solid var(--color-gold);
   border-radius: 4px;
-  padding: 2.75rem 2.25rem;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 35px rgba(180, 154, 97, 0.18);
-  text-align: left;
+  padding: 3rem 2.5rem;
+  width: 100%;
+  max-width: 760px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(180, 154, 97, 0.2);
+}
+
+/* ============================================================ */
+/* STEP 3: THE SIGN IN PAGE (DEMO ACCESS TO EXPLORE OPTIONS)    */
+/* ============================================================ */
+.signInScreen {
+  min-height: 100vh;
+  background: radial-gradient(circle at 50% 20%, #290814 0%, #160409 60%, #0E0205 100%);
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 6rem;
+}
+
+.signInTopNav {
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(180, 154, 97, 0.15);
+}
+
+.signInContainer {
+  max-width: 860px;
+  margin: 3rem auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signInHeading {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  color: var(--color-ivory);
+  letter-spacing: 0.1em;
+  margin: 0.75rem 0 0.5rem;
+}
+
+.signInSubheading {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--color-champagne);
+  max-width: 620px;
+  margin: 0 auto;
 }
 
 .personaGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.25rem;
-  margin-bottom: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 1.75rem;
+  width: 100%;
+  margin-bottom: 2.5rem;
 }
 
-.personaBtn {
-  background: linear-gradient(135deg, rgba(53, 19, 29, 0.8), rgba(74, 24, 39, 0.5));
+.personaCard {
+  background: linear-gradient(135deg, rgba(42, 10, 21, 0.85) 0%, rgba(26, 6, 13, 0.95) 100%);
   border: 1px solid var(--color-gold);
-  border-radius: 3px;
-  padding: 1.5rem;
-  cursor: pointer;
-  text-align: left;
-  transition: all 0.3s ease;
+  border-radius: 4px;
+  padding: 2.25rem 2rem;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(180, 154, 97, 0.12);
   display: flex;
   flex-direction: column;
-  gap: 6px;
-}
-
-.personaBtn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(180, 154, 97, 0.35);
-  border-color: #E2D1A6;
 }
 
 .personaTag {
@@ -271,28 +362,39 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-gold);
+  background: rgba(180, 154, 97, 0.15);
+  padding: 4px 10px;
+  border-radius: 20px;
 }
 
 .personaName {
   font-family: var(--font-serif);
-  font-size: 1.15rem;
+  font-size: 1.45rem;
   color: var(--color-ivory);
+  letter-spacing: 0.05em;
+  margin: 0.25rem 0;
 }
 
 .personaRole {
-  font-family: var(--font-sans);
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   color: var(--color-champagne);
+  font-style: italic;
+  margin-bottom: 0.75rem;
 }
 
-.personaAction {
-  font-size: 0.75rem;
-  color: var(--color-gold-light);
-  margin-top: 8px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-weight: 600;
+.personaDesc {
+  font-size: 0.85rem;
+  color: var(--color-stone);
+  line-height: 1.5;
+  margin-bottom: auto;
+}
+
+.customFormBox {
+  width: 100%;
+  background: rgba(22, 5, 11, 0.65);
+  border: 1px solid rgba(180, 154, 97, 0.25);
+  border-radius: 4px;
+  padding: 1.75rem;
 }
 
 .customForm {
@@ -300,19 +402,17 @@
   gap: 1rem;
   flex-wrap: wrap;
   align-items: center;
-  padding-top: 1.75rem;
-  border-top: 1px solid rgba(180, 154, 97, 0.2);
 }
 
 .customInput {
-  background: rgba(22, 5, 11, 0.7);
+  background: rgba(14, 2, 6, 0.8);
   border: 1px solid rgba(180, 154, 97, 0.35);
   padding: 12px 16px;
   color: var(--color-ivory);
   border-radius: 2px;
   outline: none;
-  font-size: 0.85rem;
-  flex: 1 1 200px;
+  font-size: 0.88rem;
+  flex: 1 1 220px;
 }
 
 .customInput:focus {
@@ -320,37 +420,52 @@
 }
 
 /* ============================================================ */
-/* 3. ATELIER WORKSPACE (WITH LEFT SIDEBAR)                     */
+/* STEP 4: WORKSPACE WITH LEFT SIDEBAR                          */
 /* ============================================================ */
-.atelierLayout {
+.workspaceLayout {
   display: flex;
   min-height: 100vh;
   width: 100%;
 }
 
 @media (max-width: 900px) {
-  .atelierLayout {
+  .workspaceLayout {
     flex-direction: column;
   }
 }
 
-.mainContent {
+.workspaceMain {
   flex: 1;
   min-width: 0;
   display: flex;
   flex-direction: column;
   background: #140409;
+  padding: 0 2rem 4rem;
 }
 
-.topUtilityBar {
-  padding: 1rem 2rem;
+@media (max-width: 768px) {
+  .workspaceMain {
+    padding: 0 1rem 3rem;
+  }
+}
+
+.workspaceTopBar {
+  padding: 1.25rem 0;
   border-bottom: 1px solid rgba(180, 154, 97, 0.2);
-  background: rgba(24, 6, 12, 0.95);
+  background: rgba(20, 4, 9, 0.95);
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: sticky;
   top: 0;
   z-index: 90;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
+  margin-bottom: 1.5rem;
+}
+
+.activeSectionTitle {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: var(--color-gold-light);
+  letter-spacing: 0.06em;
 }

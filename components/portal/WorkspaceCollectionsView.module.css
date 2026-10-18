@@ -1,0 +1,312 @@
+.collectionsWrapper {
+  padding: 1.5rem 0 4rem;
+}
+
+.headerArea {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid rgba(180, 154, 97, 0.2);
+  padding-bottom: 1.5rem;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  letter-spacing: 0.1em;
+  color: var(--color-ivory);
+  margin: 0.5rem 0;
+}
+
+.description {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--color-champagne);
+  max-width: 720px;
+}
+
+.archivesScroll {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.archivePill {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(18, 4, 9, 0.6);
+  border: 1px solid rgba(180, 154, 97, 0.25);
+  border-radius: 40px;
+  padding: 6px 16px 6px 6px;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.archivePill:hover {
+  background: rgba(32, 7, 15, 0.85);
+  border-color: var(--color-gold);
+}
+
+.activeArchivePill {
+  background: rgba(45, 10, 23, 0.95);
+  border-color: var(--color-gold);
+  box-shadow: 0 0 12px rgba(180, 154, 97, 0.3);
+}
+
+.archivePillImg {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--color-gold);
+}
+
+.archivePillName {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 0.82rem;
+  color: var(--color-ivory);
+}
+
+.archivePillOrigin {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--color-champagne);
+  font-style: italic;
+}
+
+.filtersBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  border-bottom: 1px solid rgba(180, 154, 97, 0.15);
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.filterTabsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filterBtn {
+  background: none;
+  border: 1px solid transparent;
+  color: var(--color-stone);
+  font-family: var(--font-serif);
+  font-size: 0.78rem;
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.filterBtn:hover {
+  color: var(--color-ivory);
+  border-color: rgba(180, 154, 97, 0.3);
+}
+
+.activeFilter {
+  background: rgba(180, 154, 97, 0.15);
+  border-color: var(--color-gold);
+  color: var(--color-gold-light);
+  font-weight: 600;
+}
+
+.productsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.productCard {
+  background: rgba(18, 4, 9, 0.7);
+  border: 1px solid rgba(180, 154, 97, 0.2);
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+}
+
+.productCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(180, 154, 97, 0.5);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+}
+
+.imageStage {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  background: #0E0205;
+  overflow: hidden;
+}
+
+.cardImg {
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.productCard:hover .cardImg {
+  transform: scale(1.04);
+}
+
+.originTag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(18, 4, 9, 0.85);
+  border: 1px solid var(--color-gold);
+  color: var(--color-gold-light);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  padding: 4px 10px;
+  border-radius: 2px;
+  font-family: var(--font-serif);
+  text-transform: uppercase;
+}
+
+.actionOverlay {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  gap: 8px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all var(--transition-fast);
+}
+
+.productCard:hover .actionOverlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.overlayBtn {
+  flex: 1;
+  background: rgba(18, 4, 9, 0.9);
+  border: 1px solid rgba(180, 154, 97, 0.4);
+  color: var(--color-ivory);
+  font-family: var(--font-serif);
+  font-size: 0.74rem;
+  padding: 8px 10px;
+  border-radius: 2px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all var(--transition-fast);
+}
+
+.overlayBtn:hover {
+  background: rgba(35, 8, 18, 0.95);
+  border-color: var(--color-gold);
+}
+
+.overlayBtnGold {
+  background: rgba(180, 154, 97, 0.85);
+  color: #120308;
+  border-color: var(--color-gold);
+  font-weight: 600;
+}
+
+.overlayBtnGold:hover {
+  background: var(--color-gold);
+  color: #000;
+}
+
+.cardBody {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex: 1;
+}
+
+.collectionTitle {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: 0.8rem;
+  color: var(--color-champagne);
+}
+
+.productName {
+  font-family: var(--font-serif);
+  font-size: 0.98rem;
+  color: var(--color-ivory);
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+}
+
+.specsRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.74rem;
+  color: var(--color-stone);
+  margin-top: 0.2rem;
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(180, 154, 97, 0.15);
+}
+
+.price {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-gold-light);
+}
+
+.iconActionBtn {
+  background: rgba(180, 154, 97, 0.15);
+  border: 1px solid rgba(180, 154, 97, 0.3);
+  color: var(--color-gold);
+  padding: 8px;
+  border-radius: 2px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.iconActionBtn:hover {
+  background: rgba(180, 154, 97, 0.3);
+  border-color: var(--color-gold);
+}
+
+.cartActionBtn {
+  background: var(--color-gold);
+  border: 1px solid var(--color-gold);
+  color: #120308;
+  font-family: var(--font-serif);
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 2px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--transition-fast);
+}
+
+.cartActionBtn:hover {
+  background: var(--color-gold-light);
+}

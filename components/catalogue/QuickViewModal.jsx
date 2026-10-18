@@ -5,7 +5,7 @@ import Link from "next/link";
 import { X, Sparkles, ShoppingBag, ShieldCheck, ArrowRight } from "lucide-react";
 import { useCart } from "@/lib/cartContext";
 
-export default function QuickViewModal({ product, onClose }) {
+export default function QuickViewModal({ product, onClose, onSelectTryOn }) {
   const { addToCart } = useCart();
 
   if (!product) return null;
@@ -113,15 +113,30 @@ export default function QuickViewModal({ product, onClose }) {
                   <span>Add to Cart</span>
                 </button>
 
-                <Link
-                  href={`/try-on?saree=${product.id}`}
-                  className="btn-outline"
-                  onClick={onClose}
-                  title="Virtual Try-On"
-                >
-                  <Sparkles size={16} className="text-gold" />
-                  <span>Try On</span>
-                </Link>
+                {onSelectTryOn ? (
+                  <button
+                    type="button"
+                    className="btn-outline"
+                    onClick={() => {
+                      onClose();
+                      onSelectTryOn(product);
+                    }}
+                    title="Virtual Try-On in AI Studio"
+                  >
+                    <Sparkles size={16} className="text-gold" />
+                    <span>Try On</span>
+                  </button>
+                ) : (
+                  <Link
+                    href={`/try-on?saree=${product.id}`}
+                    className="btn-outline"
+                    onClick={onClose}
+                    title="Virtual Try-On"
+                  >
+                    <Sparkles size={16} className="text-gold" />
+                    <span>Try On</span>
+                  </Link>
+                )}
               </div>
 
               <Link
