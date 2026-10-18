@@ -17,6 +17,10 @@ export default function CuratedProductsSection() {
     { id: "banarasi", label: "Banarasi" },
     { id: "mysore", label: "Mysore Silk" },
     { id: "bridal", label: "Bridal Heirlooms" },
+    { id: "paithani", label: "Royal Paithani" },
+    { id: "chanderi", label: "Chanderi Tissue" },
+    { id: "tussar-muga", label: "Assam Muga" },
+    { id: "contemporary", label: "Contemporary" },
   ];
 
   const filteredProducts = selectedFilter === "all"
@@ -24,7 +28,7 @@ export default function CuratedProductsSection() {
     : products.filter((p) => p.collectionId === selectedFilter);
 
   return (
-    <section className="section" style={{ padding: "8rem 0", background: "#170409" }} aria-label="Curated Silk Heirlooms">
+    <section className="section" style={{ padding: "6rem 0 8rem", background: "#170409" }} aria-label="Curated Silk Heirlooms">
       <div className="container">
         <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
           <span className="editorial-label">Selected Atelier Creations</span>
@@ -36,14 +40,14 @@ export default function CuratedProductsSection() {
             marginTop: "0.75rem",
             marginBottom: "1rem"
           }}>
-            The Curated Collection
+            The Curated Heirlooms Archive
           </h2>
           <p style={{
             fontFamily: "var(--font-editorial)",
             fontStyle: "italic",
             fontSize: "1.25rem",
             color: "var(--color-champagne)",
-            maxWidth: "600px",
+            maxWidth: "640px",
             margin: "0 auto"
           }}>
             “Each creation is unrepeatable, possessing the warmth of the artisan hands that formed it.”
@@ -54,7 +58,7 @@ export default function CuratedProductsSection() {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            gap: "0.75rem",
+            gap: "0.6rem",
             flexWrap: "wrap",
             marginTop: "2.5rem"
           }}>
@@ -69,9 +73,9 @@ export default function CuratedProductsSection() {
                   border: selectedFilter === tab.id ? "1px solid var(--color-gold)" : "1px solid rgba(180, 154, 97, 0.25)",
                   fontFamily: "var(--font-sans)",
                   fontSize: "0.78rem",
-                  letterSpacing: "0.14em",
+                  letterSpacing: "0.12em",
                   textTransform: "uppercase",
-                  padding: "8px 20px",
+                  padding: "8px 18px",
                   borderRadius: "2px",
                   cursor: "pointer",
                   fontWeight: selectedFilter === tab.id ? 700 : 500,
@@ -102,7 +106,7 @@ export default function CuratedProductsSection() {
 
         <div style={{ textAlign: "center" }}>
           <Link href="/collections" className="btn-outline">
-            <span>Explore Entire Silk Catalogue</span>
+            <span>Explore All Certified Silk Heirlooms</span>
             <ArrowRight size={16} />
           </Link>
         </div>

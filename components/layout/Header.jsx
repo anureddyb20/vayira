@@ -14,7 +14,9 @@ import {
   Sparkles, 
   Palette,
   Compass,
-  ArrowRight
+  ArrowRight,
+  KeyRound,
+  Crown
 } from "lucide-react";
 import styles from "./Header.module.css";
 
@@ -52,28 +54,29 @@ export default function Header() {
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation - Ordered as requested */}
           <nav className={styles.navDesktop} aria-label="Main Navigation">
+            <Link href="/#patron-access" className={styles.navLink} style={{ color: "var(--color-gold-light)" }}>
+              <KeyRound size={13} className="text-gold" />
+              <span>1. Sign In (Demo)</span>
+            </Link>
+
+            <Link href="/#philosophy" className={styles.navLink}>
+              <span>2. Heritage</span>
+            </Link>
+
             <Link href="/collections" className={styles.navLink}>
-              Collections
+              <span>3. Collections</span>
             </Link>
             
             <Link href="/atelier" className={styles.navLink}>
-              <span>Saree Atelier</span>
+              <span>4. Saree Atelier</span>
               <span className={styles.navBadge}>Bespoke</span>
             </Link>
 
             <Link href="/try-on" className={styles.navLink}>
-              <span>See Yourself in Silk</span>
+              <span>5. See Yourself</span>
               <span className={styles.navBadge}>AI Studio</span>
-            </Link>
-
-            <Link href="/#craftsmanship" className={styles.navLink}>
-              Craftsmanship
-            </Link>
-
-            <Link href="/#heritage" className={styles.navLink}>
-              Heritage
             </Link>
           </nav>
 
@@ -92,7 +95,7 @@ export default function Header() {
               title={user ? `Signed in as ${user.email}` : "Sign In / Royal Account"}
               aria-label="Account"
             >
-              <User size={20} />
+              {user ? <Crown size={19} className="text-gold" /> : <User size={20} />}
             </button>
 
             <button
@@ -140,29 +143,29 @@ export default function Header() {
           </div>
 
           <nav className={styles.mobileNavLinks} aria-label="Mobile Navigation">
+            <Link href="/#patron-access" className={styles.mobileNavLink}>
+              <span>1. Sign In with Demo</span>
+              <KeyRound size={18} className="text-gold" />
+            </Link>
+
+            <Link href="/#philosophy" className={styles.mobileNavLink}>
+              <span>2. Heritage & Craftsmanship</span>
+              <Compass size={18} />
+            </Link>
+
             <Link href="/collections" className={styles.mobileNavLink}>
-              <span>Curated Collections</span>
+              <span>3. Royal Collections (8 Archives)</span>
               <ArrowRight size={18} />
             </Link>
 
             <Link href="/atelier" className={styles.mobileNavLink}>
-              <span>Saree Custom Atelier</span>
+              <span>4. Saree Custom Atelier</span>
               <Palette size={18} className="text-gold" />
             </Link>
 
             <Link href="/try-on" className={styles.mobileNavLink}>
-              <span>See Yourself in Silk (AI Try-On)</span>
+              <span>5. See Yourself in Silk (AI Try-On)</span>
               <Sparkles size={18} className="text-gold" />
-            </Link>
-
-            <Link href="/#craftsmanship" className={styles.mobileNavLink}>
-              <span>Loom & Zari Craftsmanship</span>
-              <Compass size={18} />
-            </Link>
-
-            <Link href="/#heritage" className={styles.mobileNavLink}>
-              <span>The House of VAYIRA</span>
-              <ArrowRight size={18} />
             </Link>
 
             <Link href="/account" className={styles.mobileNavLink}>

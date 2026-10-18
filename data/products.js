@@ -21,7 +21,7 @@ export const products = [
     blouseDescription: "Unstitched pure burgundy silk fabric (0.8m) with matching antique zari sleeve border",
     weavingDuration: "24 Days on Pit Loom",
     markCertified: "Silk Mark & Handloom Mark Certified",
-    stockStatus: "In Atelier (2 pieces crafted)",
+    stockStatus: "In Atelier",
     isFeatured: true,
     tryOnSupported: true,
     primaryImage: "/images/hero-saree.jpg",
@@ -38,14 +38,11 @@ export const products = [
       { label: "Total Length", value: "6.3 meters (including 0.8m blouse piece)" },
       { label: "Width", value: "48 inches" },
       { label: "Weft & Warp", value: "Triple twist 3-ply silk" },
-      { label: "Weight", value: "Approx. 920 grams" },
-      { label: "Preservation", value: "Includes complimentary heirloom cotton muslin wrap & aromatic cedar box" }
+      { label: "Weight", value: "Approx. 920 grams" }
     ],
     careInstructions: [
       "Dry clean only by certified luxury textile specialists.",
-      "Store wrapped in breathable pure cotton or muslin fabric.",
-      "Avoid contact with perfumes, alcohol-based sprays, and direct moisture.",
-      "Refold periodically along original creases to preserve zari thread tension."
+      "Store wrapped in breathable pure cotton or muslin fabric."
     ]
   },
   {
@@ -70,7 +67,7 @@ export const products = [
     blouseDescription: "Unstitched pure emerald Katan silk (0.8m) with intricate kadhwa boota",
     weavingDuration: "31 Days on Varanasi Pit Loom",
     markCertified: "Silk Mark & Geographical Indication (GI) Tagged",
-    stockStatus: "In Atelier (1 piece crafted)",
+    stockStatus: "In Atelier",
     isFeatured: true,
     tryOnSupported: true,
     primaryImage: "/images/banarasi.jpg",
@@ -83,16 +80,12 @@ export const products = [
     specifications: [
       { label: "Fabric", value: "Pure Varanasi Katan Silk" },
       { label: "Zari Content", value: "Tested Antique Gold Zari" },
-      { label: "Total Length", value: "6.3 meters (including 0.8m blouse piece)" },
-      { label: "Width", value: "46.5 inches" },
-      { label: "Technique", value: "Kadhwa (interlocked floral jaal)" },
-      { label: "Weight", value: "Approx. 880 grams" },
-      { label: "Preservation", value: "Includes complimentary heirloom cotton wrap & cedar presentation box" }
+      { label: "Total Length", value: "6.3 meters (with blouse piece)" },
+      { label: "Weight", value: "Approx. 880 grams" }
     ],
     careInstructions: [
       "Strictly dry clean only.",
-      "Store flat in dark, humidity-controlled closets.",
-      "Never spray scent or water directly onto gold zari threads."
+      "Store flat in dark, humidity-controlled closets."
     ]
   },
   {
@@ -117,7 +110,7 @@ export const products = [
     blouseDescription: "Unstitched matching wine crepe silk (0.8m) with gold zari border",
     weavingDuration: "14 Days",
     markCertified: "Silk Mark & KSIC Authenticity Tag",
-    stockStatus: "In Atelier (3 pieces crafted)",
+    stockStatus: "In Atelier",
     isFeatured: true,
     tryOnSupported: true,
     primaryImage: "/images/mysore.jpg",
@@ -130,14 +123,11 @@ export const products = [
     specifications: [
       { label: "Fabric", value: "Pure Mulberry Crepe Silk" },
       { label: "Zari Content", value: "Pure 0.65% Gold Gilt Silver Zari" },
-      { label: "Total Length", value: "6.25 meters (with blouse)" },
-      { label: "Width", value: "45 inches" },
-      { label: "Feel", value: "Fluid, lightweight, second-skin drape" },
-      { label: "Weight", value: "Approx. 540 grams" }
+      { label: "Total Length", value: "6.25 meters (with blouse)" }
     ],
     careInstructions: [
       "Professional dry clean only.",
-      "Iron on reverse using lowest silk setting with cloth buffer."
+      "Iron on reverse using lowest silk setting."
     ]
   },
   {
@@ -162,7 +152,7 @@ export const products = [
     blouseDescription: "Hand-embellished pure silk unstitched fabric with sleeve and back zari borders (1.0m)",
     weavingDuration: "95 Days on Wooden Pit Loom",
     markCertified: "Silk Mark Certified Heirloom with Unique Loom Certificate",
-    stockStatus: "Made to Heirloom Order (1 available for immediate acquisition)",
+    stockStatus: "In Atelier",
     isFeatured: true,
     tryOnSupported: true,
     primaryImage: "/images/bridal.jpg",
@@ -176,10 +166,7 @@ export const products = [
     specifications: [
       { label: "Fabric", value: "Double-Weft Heavy Mulberry Silk" },
       { label: "Zari Weight", value: "520g Pure Bullion Antique Zari" },
-      { label: "Total Length", value: "6.5 meters" },
-      { label: "Width", value: "48.5 inches" },
-      { label: "Artisan Hours", value: "Over 750 hours of handloom weaving" },
-      { label: "Weight", value: "Approx. 1,180 grams" }
+      { label: "Total Length", value: "6.5 meters" }
     ],
     careInstructions: [
       "Heirloom conservation: Dry clean by silk preservation conservators.",
@@ -208,7 +195,7 @@ export const products = [
     blouseDescription: "Unstitched pure ivory raw silk blouse piece (0.85m)",
     weavingDuration: "18 Days",
     markCertified: "Silk Mark Certified",
-    stockStatus: "In Atelier (4 pieces crafted)",
+    stockStatus: "In Atelier",
     isFeatured: true,
     tryOnSupported: true,
     primaryImage: "/images/contemporary.jpg",
@@ -220,14 +207,10 @@ export const products = [
     description: "Chandra Kanti brings a fresh modern sensibility to royal Indian silk. Gossamer-light silk organza in a warm champagne hue is accented by delicately brushed antique gold zari borders with contemporary architectural motifs, creating an ethereal drape for modern evening receptions.",
     specifications: [
       { label: "Fabric", value: "Pure Silk Organza & Tissue Silk" },
-      { label: "Zari Content", value: "Brushed Antique Gold Zari" },
-      { label: "Total Length", value: "6.2 meters" },
-      { label: "Width", value: "47 inches" },
-      { label: "Weight", value: "Approx. 430 grams (Featherlight)" }
+      { label: "Zari Content", value: "Brushed Antique Gold Zari" }
     ],
     careInstructions: [
-      "Specialist dry clean only.",
-      "Store rolls on cardboard cylinders to prevent sharp creases."
+      "Specialist dry clean only."
     ]
   },
   {
@@ -252,7 +235,7 @@ export const products = [
     blouseDescription: "Contrast deep wine pure silk blouse piece (0.8m)",
     weavingDuration: "21 Days",
     markCertified: "Silk Mark Certified",
-    stockStatus: "In Atelier (2 pieces crafted)",
+    stockStatus: "In Atelier",
     isFeatured: false,
     tryOnSupported: true,
     primaryImage: "/images/kanjeevaram.jpg",
@@ -263,13 +246,210 @@ export const products = [
     editorialQuote: "The radiance of the morning sun upon temple sanctums.",
     description: "An auspicious color pairing celebrated in royal ceremonies for centuries. Luminous mustard gold silk body is complemented by an arresting deep wine Korvai border with pure antique gold temple gopuram motifs.",
     specifications: [
-      { label: "Fabric", value: "100% Pure Mulberry Silk" },
-      { label: "Total Length", value: "6.3 meters" },
-      { label: "Weight", value: "Approx. 860 grams" }
+      { label: "Fabric", value: "100% Pure Mulberry Silk" }
     ],
     careInstructions: [
-      "Dry clean only.",
-      "Store in breathable cotton wrap."
+      "Dry clean only."
     ]
+  },
+  // NEW EXPANDED COLLECTION HEIRLOOMS
+  {
+    id: "vayira-morpankhi-paithani",
+    slug: "morpankhi-peacock-paithani",
+    name: "Morpankhi Royal Indigo Paithani",
+    collectionId: "paithani",
+    collectionName: "The Royal Paithani Collection",
+    price: 115000,
+    priceFormatted: "₹1,15,000",
+    silkType: "Pure Charkha Mulberry Silk",
+    origin: "Yeola, Maharashtra",
+    weaveType: "Centuries-Old Tapestry Interlock Handloom",
+    colorFamily: "Navy",
+    colorName: "Royal Peacock Indigo & Magenta",
+    colorHex: "#14213D",
+    zariType: "Tested Solid Gold & Silver Muniya Zari",
+    zariWeight: "440 grams",
+    borderWidth: "5.2 inches (Asawali & Parrot Muniya Border)",
+    palluPattern: "Grand Tapestry Kaleidoscope Peacock Urn",
+    blouseIncluded: true,
+    blouseDescription: "Unstitched matching royal indigo silk (0.8m) with Muniya zari border",
+    weavingDuration: "52 Days",
+    markCertified: "Silk Mark & Paithani GI Certified",
+    stockStatus: "In Atelier",
+    isFeatured: true,
+    tryOnSupported: true,
+    primaryImage: "/images/hero-saree.jpg",
+    gallery: [
+      "/images/hero-saree.jpg",
+      "/images/kanjeevaram.jpg",
+    ],
+    editorialQuote: "The sacred poem in silk of the Peshwa royal courts.",
+    description: "Woven entirely by hand without mechanical dobby or jacquard punch cards, each thread in the Morpankhi Paithani is interlocked like a fine medieval tapestry. The majestic pallu depicts dancing peacocks inside royal urns, glistening with pure tested gold zari.",
+    specifications: [
+      { label: "Fabric", value: "Pure Mulberry Hand-Spun Silk" },
+      { label: "Weave Technique", value: "Oblique Interlock Tapestry" },
+      { label: "Pallu Time", value: "Over 180 hours dedicated to pallu alone" }
+    ],
+    careInstructions: ["Preserve flat in unbleached pure cotton muslin wrap."]
+  },
+  {
+    id: "vayira-kesariya-paithani",
+    slug: "kesariya-saffron-paithani",
+    name: "Kesariya Saffron & Emerald Paithani",
+    collectionId: "paithani",
+    collectionName: "The Royal Paithani Collection",
+    price: 98000,
+    priceFormatted: "₹98,000",
+    silkType: "Fine Mulberry Silk",
+    origin: "Paithan, Maharashtra",
+    weaveType: "Traditional Tapestry Weave",
+    colorFamily: "Gold",
+    colorName: "Saffron Ochre & Heritage Emerald",
+    colorHex: "#D48B38",
+    zariType: "Tested Gold Zari",
+    zariWeight: "360 grams",
+    borderWidth: "4.5 inches (Narali Coconut Border)",
+    palluPattern: "Traditional Mor-Bangadi (Peacock Bangle) Tapestry",
+    blouseIncluded: true,
+    blouseDescription: "Contrast emerald green silk unstitched blouse piece (0.8m)",
+    weavingDuration: "38 Days",
+    markCertified: "Silk Mark Certified",
+    stockStatus: "In Atelier",
+    isFeatured: false,
+    tryOnSupported: true,
+    primaryImage: "/images/banarasi.jpg",
+    gallery: ["/images/banarasi.jpg", "/images/atelier-silk.jpg"],
+    editorialQuote: "A celebration of auspicious harvest sunsets and Peshwa regalia.",
+    description: "An aristocratic saffron ochre body complemented by an emerald green Narali border and the revered Mor-Bangadi motif depicting peacocks encircled within traditional gold bangles.",
+    specifications: [{ label: "Fabric", value: "100% Pure Silk" }],
+    careInstructions: ["Specialist dry clean only."]
+  },
+  {
+    id: "vayira-noor-chanderi",
+    slug: "noor-gold-tissue-chanderi",
+    name: "Noor Antique Ivory Gold Tissue Chanderi",
+    collectionId: "chanderi",
+    collectionName: "The Chanderi Royal Tissue Collection",
+    price: 48500,
+    priceFormatted: "₹48,500",
+    silkType: "Pure Silk & Metallic Tissue",
+    origin: "Pranpur, Chanderi, Madhya Pradesh",
+    weaveType: "Weightless Gossamer Extra-Weft Loom",
+    colorFamily: "Ivory",
+    colorName: "Luminous Ivory & Shimmer Gold",
+    colorHex: "#FAF6F0",
+    zariType: "Electro-Gilded Fine Zari",
+    zariWeight: "180 grams",
+    borderWidth: "3.0 inches (Ganga-Jamuna Delicate Zari)",
+    palluPattern: "Ashrafi Gold Coin Bootis & Geometric Bands",
+    blouseIncluded: true,
+    blouseDescription: "Unstitched ivory raw silk (0.85m)",
+    weavingDuration: "16 Days",
+    markCertified: "Silk Mark & Chanderi GI Tagged",
+    stockStatus: "In Atelier",
+    isFeatured: true,
+    tryOnSupported: true,
+    primaryImage: "/images/contemporary.jpg",
+    gallery: ["/images/contemporary.jpg", "/images/atelier-silk.jpg"],
+    editorialQuote: "Woven air. The gossamer whisper of Central Indian royalty.",
+    description: "Favored by royal dynasties for celebratory summer durbars. Hand-spun silk warp interwoven with gold tissue weft produces an ethereal translucent drape that captures ambient evening candle light with supernatural grace.",
+    specifications: [{ label: "Fabric", value: "Pure Mulberry Silk & Gold Tissue" }],
+    careInstructions: ["Gentle dry clean only."]
+  },
+  {
+    id: "vayira-gulab-kundan",
+    slug: "gulab-kundan-pink-banarasi",
+    name: "Gulab Kundan Rose & Silver Banarasi",
+    collectionId: "banarasi",
+    collectionName: "The Banarasi Collection",
+    price: 88000,
+    priceFormatted: "₹88,000",
+    silkType: "Pure Katan Silk",
+    origin: "Varanasi, Uttar Pradesh",
+    weaveType: "Kadhwa Floral Jangla Weave",
+    colorFamily: "Pink",
+    colorName: "Antique Gulab Rose & Silver-Gold Zari",
+    colorHex: "#9B384A",
+    zariType: "Dual Silver & Antique Gold (Sona-Rupa) Zari",
+    zariWeight: "390 grams",
+    borderWidth: "4.5 inches (Floral Creeper)",
+    palluPattern: "All-Over Floral Jaal with Dual Metallic Sheen",
+    blouseIncluded: true,
+    blouseDescription: "Matching antique gulab pure silk unstitched piece (0.8m)",
+    weavingDuration: "28 Days",
+    markCertified: "Silk Mark Certified",
+    stockStatus: "In Atelier",
+    isFeatured: false,
+    tryOnSupported: true,
+    primaryImage: "/images/bridal.jpg",
+    gallery: ["/images/bridal.jpg", "/images/atelier-silk.jpg"],
+    editorialQuote: "Sona-Rupa: the sacred harmony of sun and moon metallics.",
+    description: "The Gulab Kundan marries pure silver and gold zari across a romantic rose wine Katan silk canvas. The Kadhwa jangla floral pattern covers the entire drape without a single floating yarn on the reverse side.",
+    specifications: [{ label: "Fabric", value: "Pure Varanasi Katan Silk" }],
+    careInstructions: ["Strict dry clean only."]
+  },
+  {
+    id: "vayira-swarna-muga",
+    slug: "swarna-rekha-golden-muga",
+    name: "Swarna Rekha Pure Assam Muga Silk",
+    collectionId: "tussar-muga",
+    collectionName: "The Royal Muga & Tussar Archive",
+    price: 110000,
+    priceFormatted: "₹1,10,000",
+    silkType: "100% Pure Wild Untamed Assam Muga Silk",
+    origin: "Sualkuchi, Assam",
+    weaveType: "Traditional Throw-Shuttle Loom",
+    colorFamily: "Gold",
+    colorName: "Natural Golden Honey Muga",
+    colorHex: "#C49A45",
+    zariType: "Antique Copper-Gold Burnished Zari",
+    zariWeight: "290 grams",
+    borderWidth: "4.0 inches (Kaziranga Sacred Temple Motif)",
+    palluPattern: "Rhombus Diamond Bands & Royal Floral Crests",
+    blouseIncluded: true,
+    blouseDescription: "Unstitched pure golden Muga silk fabric (0.8m)",
+    weavingDuration: "36 Days",
+    markCertified: "Assam Muga Silk Geographical Indication (GI)",
+    stockStatus: "In Atelier",
+    isFeatured: true,
+    tryOnSupported: true,
+    primaryImage: "/images/craftsmanship-loom.jpg",
+    gallery: ["/images/craftsmanship-loom.jpg", "/images/kanjeevaram.jpg"],
+    editorialQuote: "The golden silk that outlives its wearer.",
+    description: "Muga silk is found nowhere else on earth except the Brahmaputra valley. Its naturally glistening golden honey color is completely natural and does not use chemical dyes. Historically reserved solely for Ahom royalty.",
+    specifications: [{ label: "Fabric", value: "100% Wild Muga Silk (Som Tree Feed)" }],
+    careInstructions: ["Dry clean only. Becomes shinier with age."]
+  },
+  {
+    id: "vayira-neelambari-kanjeevaram",
+    slug: "neelambari-navy-kanjeevaram",
+    name: "Neelambari Midnight Navy Kanjeevaram",
+    collectionId: "kanjeevaram",
+    collectionName: "The Kanjeevaram Collection",
+    price: 86000,
+    priceFormatted: "₹86,000",
+    silkType: "Pure 3-Ply Mulberry Silk",
+    origin: "Kanchipuram, Tamil Nadu",
+    weaveType: "Korvai Contrast Handloom",
+    colorFamily: "Navy",
+    colorName: "Midnight Navy & Vermilion Red",
+    colorHex: "#121C2B",
+    zariType: "Pure Tested Antique Gold Zari",
+    zariWeight: "370 grams",
+    borderWidth: "5.8 inches (Grand Gopuram & Kalash)",
+    palluPattern: "Peacock & Elephant (Yali) Sacred Procession",
+    blouseIncluded: true,
+    blouseDescription: "Contrast auspicious vermilion pure silk blouse piece (0.8m)",
+    weavingDuration: "25 Days",
+    markCertified: "Silk Mark Certified",
+    stockStatus: "In Atelier",
+    isFeatured: false,
+    tryOnSupported: true,
+    primaryImage: "/images/hero-saree.jpg",
+    gallery: ["/images/hero-saree.jpg", "/images/atelier-silk.jpg"],
+    editorialQuote: "Midnight skies anchored by sacred temple fires.",
+    description: "Deep, impenetrable midnight navy silk body offset by a blazing vermilion red Korvai border. Heavy tested zari adds weight and majestic architectural presence to the pallu.",
+    specifications: [{ label: "Fabric", value: "100% Pure Mulberry Silk" }],
+    careInstructions: ["Dry clean only."]
   }
 ];

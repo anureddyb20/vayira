@@ -2,12 +2,13 @@ import RoyalReveal from "@/components/layout/RoyalReveal";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/home/HeroSection";
+import DemoSignInSection from "@/components/home/DemoSignInSection";
 import ArtOfSilkSection from "@/components/home/ArtOfSilkSection";
-import CuratedCollections from "@/components/home/CuratedCollections";
-import SeeYourselfTeaser from "@/components/home/SeeYourselfTeaser";
-import AtelierTeaser from "@/components/home/AtelierTeaser";
 import CraftsmanshipSection from "@/components/home/CraftsmanshipSection";
+import CuratedCollections from "@/components/home/CuratedCollections";
 import CuratedProductsSection from "@/components/home/CuratedProductsSection";
+import AtelierTeaser from "@/components/home/AtelierTeaser";
+import SeeYourselfTeaser from "@/components/home/SeeYourselfTeaser";
 
 export default function HomePage() {
   return (
@@ -19,29 +20,28 @@ export default function HomePage() {
       <Header />
 
       <main>
-        {/* Section 1: Royal Hero */}
+        {/* Introduction to VAYIRA & Royal Hero */}
         <HeroSection />
 
-        {/* Section 2: The Art of Silk */}
+        {/* 1. Sign In with Demo */}
+        <DemoSignInSection />
+
+        {/* 2. Heritage (Art of Silk & Master Pit Looms) */}
         <ArtOfSilkSection />
-
-        {/* Section 3: Curated Collections */}
-        <CuratedCollections />
-
-        {/* Section 4: Signature Feature 1 — See Yourself in Silk (AI Try-On Teaser) */}
-        <SeeYourselfTeaser />
-
-        {/* Section 5: Signature Feature 2 — Design Your Saree (Atelier Customizer Teaser) */}
-        <AtelierTeaser />
-
-        {/* Section 6: Craftsmanship (Master Pit Loom & Zari Metallurgy) */}
         <CraftsmanshipSection />
 
-        {/* Section 7: Curated Real Catalogue Showcase */}
+        {/* 3. Collections (Expanded Regional Categories & Catalog Showcase) */}
+        <CuratedCollections />
         <CuratedProductsSection />
+
+        {/* 4. Saree Atelier (Bespoke Customizer Studio) */}
+        <AtelierTeaser />
+
+        {/* 5. See Yourself in the Saree (AI Virtual Try-On Studio) */}
+        <SeeYourselfTeaser />
       </main>
 
-      {/* Section 8: Final Brand Statement & Royal Footer */}
+      {/* Final Royal Brand Statement & Footer */}
       <Footer />
     </>
   );
