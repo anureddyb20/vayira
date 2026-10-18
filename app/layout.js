@@ -25,6 +25,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata = {
+  metadataBase: new URL("https://vayira.com"),
   title: "VAYIRA — A Royal Indian Silk House | Timeless Handwoven Heirlooms",
   description: "Where India's timeless silk traditions meet personal expression. Discover authentic Kanjeevaram, Banarasi, and Mysore pure silk sarees, bespoke atelier customisation, and AI virtual try-on.",
   keywords: ["VAYIRA", "Royal Indian Silk", "Kanjeevaram Silk Saree", "Banarasi Saree", "Mysore Silk", "Pure Zari Silk", "Custom Saree Atelier", "AI Saree Try-On"],
