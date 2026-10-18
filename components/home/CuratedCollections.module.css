@@ -1,0 +1,179 @@
+.section {
+  padding: 8rem 0;
+  background: #140409;
+  position: relative;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 4rem;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.heading {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  letter-spacing: 0.14em;
+  color: var(--color-ivory);
+  margin-top: 0.75rem;
+}
+
+.editorialLayout {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 2rem;
+}
+
+/* Feature 1: Large Kanjeevaram panel (7 cols) */
+.colKanjeevaram {
+  grid-column: span 7;
+  height: 620px;
+}
+
+/* Feature 2: Banarasi panel (5 cols) */
+.colBanarasi {
+  grid-column: span 5;
+  height: 620px;
+}
+
+/* Feature 3: Mysore panel (4 cols) */
+.colMysore {
+  grid-column: span 4;
+  height: 520px;
+}
+
+/* Feature 4: Bridal Heirlooms panel (4 cols) */
+.colBridal {
+  grid-column: span 4;
+  height: 520px;
+}
+
+/* Feature 5: Contemporary panel (4 cols) */
+.colContemporary {
+  grid-column: span 4;
+  height: 520px;
+}
+
+@media (max-width: 1024px) {
+  .colKanjeevaram,
+  .colBanarasi {
+    grid-column: span 12;
+    height: 500px;
+  }
+  .colMysore,
+  .colBridal,
+  .colContemporary {
+    grid-column: span 12;
+    height: 480px;
+  }
+}
+
+.collectionCard {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 2px;
+  overflow: hidden;
+  text-decoration: none;
+  border: 1px solid rgba(180, 154, 97, 0.25);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  transition: border-color 0.4s ease;
+}
+
+.collectionCard:hover {
+  border-color: var(--color-gold);
+}
+
+.cardImage {
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+  filter: brightness(0.92);
+}
+
+.collectionCard:hover .cardImage {
+  transform: scale(1.05);
+  filter: brightness(1);
+}
+
+.gradientScrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(20, 4, 8, 0.1) 0%,
+    rgba(20, 4, 8, 0.4) 40%,
+    rgba(14, 2, 6, 0.94) 100%
+  );
+  z-index: 2;
+  transition: background 0.4s ease;
+}
+
+.collectionCard:hover .gradientScrim {
+  background: linear-gradient(
+    180deg,
+    rgba(20, 4, 8, 0) 0%,
+    rgba(20, 4, 8, 0.3) 40%,
+    rgba(14, 2, 6, 0.9) 100%
+  );
+}
+
+.cardContent {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.regionTag {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.cardTitle {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 2.5vw, 2.1rem);
+  letter-spacing: 0.08em;
+  color: var(--color-ivory);
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.cardSubtitle {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--color-champagne);
+  margin-bottom: 1.25rem;
+  max-width: 480px;
+}
+
+.cardAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-gold-light);
+  font-weight: 600;
+  transform: translateY(4px);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.collectionCard:hover .cardAction {
+  transform: translateY(0);
+  color: var(--color-ivory);
+}
