@@ -25,28 +25,38 @@ import {
   ShoppingBag,
   CheckCircle2,
   BookOpen,
-  Feather
+  Feather,
+  Mail,
+  Lock,
+  User,
+  AlertCircle,
+  X
 } from "lucide-react";
 import styles from "./VayiraUnified.module.css";
 
 export default function VayiraUnifiedExperience() {
-  const { user, signIn, signOut } = useAuth();
+  const { user, signIn, signUp, signOut } = useAuth();
   const { totalCount, setIsOpen: setCartOpen } = useCart();
 
-  // EXACT USER-REQUESTED FLOW:
+  // STAGE FLOW:
   // 1. 'reveal'    -> Luxurious Opening Page with Silk Curtains & Crest
   // 2. 'intro'     -> Dedicated Brand Introduction about VAYIRA
-  // 3. 'signin'    -> Patron Sign In Page to explore options (1-Click Demo)
-  // 4. 'workspace' -> Silk House Workspace with LEFT SIDEBAR containing all features
+  // 3. 'workspace' -> Silk House Workspace with LEFT SIDEBAR containing all features
   const [stage, setStage] = useState("reveal");
   const [parted, setParted] = useState(false);
   
-  // Left Sidebar active section: 'heritage' (2) | 'collections' (3) | 'atelier' (4) | 'tryon' (5) | 'portfolio'
+  // Left Sidebar active section: 'heritage' | 'collections' | 'atelier' | 'tryon' | 'portfolio'
   const [activeSection, setActiveSection] = useState("collections");
 
-  // Custom login state
-  const [customName, setCustomName] = useState("");
-  const [customEmail, setCustomEmail] = useState("");
+  // Sign In To Explore Modal state & Demo Credentials
+  const [isSignInOpen, setIsSignInOpen] = useState(false);
+  const [authTab, setAuthTab] = useState("signin"); // "signin" | "register"
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+  const [registerName, setRegisterName] = useState("");
+  const [demoLoaded, setDemoLoaded] = useState(false);
+  const [loginError, setLoginError] = useState("");
+  const [loginLoading, setLoginLoading] = useState(false);
 
   // Step 1 -> Step 2: Curtain reveal transition
   const handleEnterFromReveal = () => {
@@ -58,36 +68,74 @@ export default function VayiraUnifiedExperience() {
     }, 1100);
   };
 
-  // Step 2 -> Step 3: Proceed to explore / Sign In
+  // Open the Sign In to Explore Modal
   const handleProceedToSignIn = () => {
-    setStage("signin");
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    setIsSignInOpen(true);
   };
 
-  // Step 3 -> Step 4: 1-Click Demo Sign In and enter Workspace with Left Sidebar
-  const handleDemoSignIn = async (name, email, defaultSection = "collections") => {
+  // 1-Click Demo Credentials Autofill
+  const handleFillDemoCredentials = () => {
+    setLoginEmail("radhika.devi@vayira.com");
+    setLoginPassword("demo123");
+    setDemoLoaded(true);
+    setLoginError("");
+  };
+
+  // Form Submit Sign In
+  const handleModalSignIn = async (e) => {
+    if (e) e.preventDefault();
+    if (!loginEmail) return;
+    setLoginLoading(true);
+    setLoginError("");
+
     try {
-      await signIn(email, "demo123");
-    } catch (e) {
-      // Local fallback handled in authContext
+      await signIn(loginEmail, loginPassword || "demo123", "Maharani Radhika Devi");
+      setIsSignInOpen(false);
+      setActiveSection("collections");
+      setStage("workspace");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } catch (err) {
+      setLoginError(err.message || "Authentication error occurred");
+    } finally {
+      setLoginLoading(false);
     }
-    setActiveSection(defaultSection);
-    setStage("workspace");
-    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // Step 3 -> Step 4: Custom Sign In
-  const handleCustomSignIn = async (e) => {
+  // Instant 1-Click Demo Login
+  const handleQuickDemoAccess = async (name = "Maharani Radhika Devi", email = "radhika.devi@vayira.com") => {
+    setLoginLoading(true);
+    setLoginError("");
+    try {
+      await signIn(email, "demo123", name);
+      setIsSignInOpen(false);
+      setActiveSection("collections");
+      setStage("workspace");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } catch (err) {
+      setLoginError(err.message || "Failed to log in as demo patron");
+    } finally {
+      setLoginLoading(false);
+    }
+  };
+
+  // Registration handler
+  const handleModalRegister = async (e) => {
     e.preventDefault();
-    if (!customEmail) return;
+    if (!loginEmail) return;
+    setLoginLoading(true);
+    setLoginError("");
+
     try {
-      await signIn(customEmail, "demo123");
-    } catch (e) {
-      // Local fallback handled in authContext
+      await signUp(loginEmail, loginPassword || "demo123", registerName || "Royal Patron");
+      setIsSignInOpen(false);
+      setActiveSection("collections");
+      setStage("workspace");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } catch (err) {
+      setLoginError(err.message || "Registration error occurred");
+    } finally {
+      setLoginLoading(false);
     }
-    setActiveSection("collections");
-    setStage("workspace");
-    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
