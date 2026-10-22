@@ -3,270 +3,165 @@
 import { useState, useMemo } from "react";
 import Image from "next/image";
 import { 
-  MapPin, 
   Compass, 
-  Layers, 
   Feather, 
-  ShieldCheck, 
+  Crown, 
+  Layers, 
   Clock, 
   Sparkles, 
   ArrowRight, 
   Palette, 
-  Search, 
-  X, 
-  CheckCircle2, 
-  Flame,
-  Crown
+  BookOpen
 } from "lucide-react";
-import { regionFilters, stateTraditions } from "@/data/stateTraditions";
+import { sareeStories } from "@/data/sareeStories";
 import styles from "./WorkspaceHeritageView.module.css";
 
 export default function WorkspaceHeritageView({ onGoToCollections, onGoToAtelier }) {
-  const [selectedRegion, setSelectedRegion] = useState("all");
-  const [searchQuery, setSearchQuery] = useState("");
-  const [activeModalTradition, setActiveModalTradition] = useState(null);
+  const [selectedSareeId, setSelectedSareeId] = useState("all");
 
-  // Filter state traditions by region & search query
-  const filteredTraditions = useMemo(() => {
-    return stateTraditions.filter((t) => {
-      const matchesRegion = selectedRegion === "all" || t.region === selectedRegion;
-      const query = searchQuery.toLowerCase().trim();
-      if (!query) return matchesRegion;
-      
-      const matchesSearch = 
-        t.state.toLowerCase().includes(query) ||
-        t.sareeName.toLowerCase().includes(query) ||
-        t.cluster.toLowerCase().includes(query) ||
-        t.weaveTechnique.toLowerCase().includes(query) ||
-        t.motifs.some((m) => m.toLowerCase().includes(query));
-
-      return matchesRegion && matchesSearch;
-    });
-  }, [selectedRegion, searchQuery]);
+  // Filter stories by dropdown selection
+  const filteredStories = useMemo(() => {
+    if (selectedSareeId === "all") {
+      return sareeStories;
+    }
+    return sareeStories.filter((s) => s.id === selectedSareeId);
+  }, [selectedSareeId]);
 
   return (
     <div className={styles.heritageWrapper}>
       {/* Editorial Header */}
       <div className={styles.headerArea}>
-        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: "0.5rem" }}>
-          <span className="editorial-label">
-            <Compass size={14} className="text-gold" />
-            <span>2. Pan-India Sacred Handloom Lineage</span>
-          </span>
-          <span style={{ fontSize: "0.72rem", color: "var(--color-gold)", background: "rgba(180, 154, 97, 0.15)", padding: "2px 8px", borderRadius: "12px", border: "1px solid rgba(180, 154, 97, 0.3)" }}>
-            14 States Documented
-          </span>
-        </div>
-        <h2 className={styles.title}>All-India Saree Handloom Traditions & Making</h2>
+        <span className="editorial-label">
+          <Compass size={14} className="text-gold" />
+          <span>2. Sacred Textile Lineages & Handloom Traditions</span>
+        </span>
+        <h2 className={styles.title}>The Story of Indian Sarees & Their Heritage</h2>
         <p className={styles.description}>
-          “Some traditions are not worn. They are inherited.” Explore the centuries-old weaving techniques, indigenous looms, and iconic saree traditions famous across every state in India.
+          “Some traditions are not worn. They are inherited.” Journey through the authentic history, royal dynasties, sacred loom crafts, and the living traditions of India&rsquo;s most revered handwoven sarees.
         </p>
       </div>
 
-      {/* Royal Stats Ribbon */}
-      <div className={styles.statsRibbon}>
-        <div className={styles.statItem}>
-          <Crown size={26} className="text-gold" />
-          <div>
-            <span className={styles.statNumber}>14</span>
-            <span className={styles.statLabel}>State Weaving Clusters</span>
-          </div>
+      {/* Clean Dropdown Controls Bar (Not a big top box) */}
+      <div className={styles.controlsBar}>
+        <div className={styles.controlsLeft}>
+          <span className={styles.controlsCount}>
+            {selectedSareeId === "all" 
+              ? `Displaying All ${sareeStories.length} Traditional Saree Stories across India`
+              : `Focusing on ${filteredStories[0]?.name}`}
+          </span>
         </div>
 
-        <div className={styles.statItem}>
-          <ShieldCheck size={26} className="text-gold" />
-          <div>
-            <span className={styles.statNumber}>100%</span>
-            <span className={styles.statLabel}>Certified Handloom Silk</span>
-          </div>
-        </div>
-
-        <div className={styles.statItem}>
-          <Sparkles size={26} className="text-gold" />
-          <div>
-            <span className={styles.statNumber}>0.6%</span>
-            <span className={styles.statLabel}>Real Gold-Silver Zari Assaying</span>
-          </div>
-        </div>
-
-        <div className={styles.statItem}>
-          <Clock size={26} className="text-gold" />
-          <div>
-            <span className={styles.statNumber}>240</span>
-            <span className={styles.statLabel}>Days Max Handloom Weaving</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Region Filter & Search Section */}
-      <div className={styles.filterSection}>
-        <div className={styles.filterHeader}>
-          <div className={styles.filterTitle}>
-            <MapPin size={16} className="text-gold" />
-            <span>Filter Traditions by Region or State</span>
-          </div>
-
-          <div className={styles.searchInputWrapper}>
-            <Search size={16} className="text-stone" />
-            <input
-              type="text"
-              placeholder="Search by state (e.g. Tamil Nadu, Gujarat) or saree (e.g. Patola, Paithani)..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className={styles.searchInput}
-            />
-            {searchQuery && (
-              <button 
-                type="button" 
-                onClick={() => setSearchQuery("")}
-                style={{ background: "none", border: "none", color: "var(--color-stone)", cursor: "pointer" }}
-              >
-                <X size={14} />
-              </button>
-            )}
-          </div>
-        </div>
-
-        {/* Region Pills */}
-        <div className={styles.pillsRow}>
-          {regionFilters.map((rf) => (
-            <button
-              key={rf.id}
-              type="button"
-              className={`${styles.pillBtn} ${selectedRegion === rf.id ? styles.activePill : ""}`}
-              onClick={() => setSelectedRegion(rf.id)}
-            >
-              {rf.label}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Showing count indicator */}
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.5rem" }}>
-        <span style={{ fontSize: "0.8rem", color: "var(--color-stone)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
-          Displaying {filteredTraditions.length} of {stateTraditions.length} Regional Saree Lineages
-        </span>
-
-        {selectedRegion !== "all" && (
-          <button
-            type="button"
-            onClick={() => { setSelectedRegion("all"); setSearchQuery(""); }}
-            style={{ background: "none", border: "none", color: "var(--color-gold)", fontSize: "0.78rem", cursor: "pointer", textDecoration: "underline" }}
+        <div className={styles.controlsRight}>
+          <label htmlFor="saree-filter-dropdown" className={styles.dropdownLabel}>
+            Select Saree Story:
+          </label>
+          <select
+            id="saree-filter-dropdown"
+            value={selectedSareeId}
+            onChange={(e) => setSelectedSareeId(e.target.value)}
+            className={styles.sareeDropdown}
           >
-            Reset Filters
-          </button>
-        )}
+            <option value="all">All Saree Stories Across India (11 Masterpieces)</option>
+            {sareeStories.map((s) => (
+              <option key={s.id} value={s.id}>
+                {s.name} — {s.origin}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
-      {/* Pan-India Traditions Cards Grid */}
-      <div className={styles.traditionsGrid}>
-        {filteredTraditions.map((tradition) => (
-          <article key={tradition.id} className={styles.traditionCard}>
-            {/* Top Bar: State & Duration */}
-            <div className={styles.cardTopHeader}>
-              <div className={styles.stateBadge}>
-                <MapPin size={14} className="text-gold" />
-                <span>{tradition.state}</span>
-              </div>
-              <div className={styles.durationPill}>
-                <Clock size={12} className="text-gold" />
-                <span>{tradition.durationDays}</span>
-              </div>
-            </div>
-
-            {/* Visual Banner with Floating Loom Tag */}
-            <div className={styles.cardImgWrapper}>
-              <Image
-                src={tradition.image}
-                alt={`${tradition.sareeName} from ${tradition.state}`}
-                fill
-                sizes="(max-width: 768px) 100vw, 420px"
-                className={styles.cardImg}
-              />
-              <div className={styles.loomFloatingTag}>
-                <Compass size={14} className="text-gold" />
-                <span>Loom: <strong>{tradition.loomType}</strong></span>
-              </div>
-            </div>
-
-            {/* Content Body */}
-            <div className={styles.cardBody}>
-              {/* Saree Title & Cluster */}
-              <div className={styles.titleArea}>
-                <h3 className={styles.sareeTitle}>{tradition.sareeName}</h3>
-                <span className={styles.clusterSubtitle}>{tradition.cluster}</span>
-                <p className={styles.sareeTagline}>“{tradition.tagline}”</p>
+      {/* Saree Storybook Rows: Picture on LEFT, Story on RIGHT */}
+      <div className={styles.storiesList}>
+        {filteredStories.map((story) => (
+          <article key={story.id} className={styles.storyRow} id={`story-${story.id}`}>
+            {/* LEFT COLUMN: Pure Saree Still Life Picture (No models) */}
+            <div className={styles.imageColumn}>
+              <div className={styles.imageFrame}>
+                <Image
+                  src={story.image}
+                  alt={`${story.name} handwoven still life textile photograph`}
+                  fill
+                  sizes="(max-width: 1080px) 100vw, 460px"
+                  className={styles.sareeImg}
+                  priority={story.id === "kanjeevaram"}
+                />
               </div>
 
-              {/* The Weaving Technique Deep-Dive Box */}
-              <div className={styles.techniqueBox}>
-                <div className={styles.techniqueHeader}>
-                  <Layers size={14} className="text-gold" />
-                  <span>How It Is Made: {tradition.weaveTechnique}</span>
+              {/* Realistic Handloom Caption */}
+              <div className={styles.imageCaptionBox}>
+                <Feather size={14} className="text-gold" style={{ flexShrink: 0, marginTop: 2 }} />
+                <span>{story.imageCaption}</span>
+              </div>
+
+              {/* Quick Craft Facts Under Image */}
+              <div className={styles.quickSpecsBadgeGrid}>
+                <div className={styles.specItem}>
+                  <Clock size={13} className="text-gold" />
+                  <span><strong>Loom Craft:</strong> {story.loomFact}</span>
                 </div>
-                <p className={styles.techniqueSummaryText}>
-                  {tradition.techniqueSummary}
+                <div className={styles.specItem}>
+                  <Sparkles size={13} className="text-gold" />
+                  <span><strong>Zari Quality:</strong> {story.zariFact}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* RIGHT COLUMN: The Story & Historical Significance */}
+            <div className={styles.storyColumn}>
+              {/* Header */}
+              <div className={styles.storyHeader}>
+                <div className={styles.originPill}>
+                  <Crown size={12} />
+                  <span>{story.epoch} • {story.origin}</span>
+                </div>
+                <h3 className={styles.sareeName}>{story.name}</h3>
+                <p className={styles.sareeSubtitle}>{story.subtitle}</p>
+              </div>
+
+              {/* Lead Philosophical Quote */}
+              <div className={styles.leadQuoteBox}>
+                <p className={styles.leadQuoteText}>{story.leadQuote}</p>
+              </div>
+
+              {/* Chapter 1: The Royal Dynasty History & Historical Significance */}
+              <div className={styles.storyChapter}>
+                <h4 className={styles.chapterTitle}>
+                  <BookOpen size={15} />
+                  <span>The Historical Significance & Royal Dynasty Story</span>
+                </h4>
+                <p className={styles.chapterParagraph}>
+                  {story.historicalStory}
                 </p>
               </div>
 
-              {/* Technical Specifications */}
-              <div className={styles.specsGrid}>
-                <div className={styles.specRow}>
-                  <span className={styles.specLabel}>🧵 Yarn Architecture:</span>
-                  <span className={styles.specValue}>{tradition.yarnSpec}</span>
-                </div>
-                <div className={styles.specRow}>
-                  <span className={styles.specLabel}>✨ Zari Purity:</span>
-                  <span className={styles.specValue}>{tradition.zariSpec}</span>
-                </div>
-                <div className={styles.specRow}>
-                  <span className={styles.specLabel}>🏛️ Royal Lineage:</span>
-                  <span className={styles.specValue}>{tradition.historicalPatronage}</span>
-                </div>
-              </div>
-
-              {/* Iconic Motifs */}
-              <div className={styles.motifsContainer}>
-                <span className={styles.motifsLabel}>Iconic Sacred Motifs:</span>
-                <div className={styles.motifsWrap}>
-                  {tradition.motifs.map((motif, i) => (
-                    <span key={i} className={styles.motifTag}>
-                      {motif}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Curator's Note */}
-              <div className={styles.curatorBox}>
-                <Feather size={16} className="text-gold" style={{ flexShrink: 0, marginTop: 2 }} />
-                <p className={styles.curatorQuote}>
-                  {tradition.curatorNote}
+              {/* Chapter 2: The Sacred Weaving Tradition & Craft */}
+              <div className={styles.storyChapter}>
+                <h4 className={styles.chapterTitle}>
+                  <Layers size={15} />
+                  <span>The Sacred Weaving Tradition & Craftsmanship</span>
+                </h4>
+                <p className={styles.chapterParagraph}>
+                  {story.traditionCraft}
                 </p>
               </div>
-            </div>
 
-            {/* Card Actions */}
-            <div className={styles.cardActions}>
-              <button
-                type="button"
-                className={styles.inspectBtn}
-                onClick={() => setActiveModalTradition(tradition)}
-              >
-                <Compass size={14} />
-                <span>Inspect 5-Stage Loom Anatomy</span>
-              </button>
+              {/* Motif Symbolism */}
+              <div className={styles.motifBox}>
+                <h5 className={styles.motifBoxHeader}>Sacred Motifs & Cultural Symbolism</h5>
+                <p className={styles.motifBoxContent}>{story.motifSymbolism}</p>
+              </div>
 
-              <div className={styles.subActionRow}>
+              {/* Action Buttons */}
+              <div className={styles.storyActionRow}>
                 {onGoToCollections && (
                   <button
                     type="button"
                     onClick={onGoToCollections}
-                    className={styles.subActionBtn}
+                    className={styles.storyBtnPrimary}
                   >
-                    <span>View in 3. Collections</span>
-                    <ArrowRight size={13} />
+                    <span>View Heirlooms in 3. Collections</span>
+                    <ArrowRight size={14} />
                   </button>
                 )}
 
@@ -274,10 +169,10 @@ export default function WorkspaceHeritageView({ onGoToCollections, onGoToAtelier
                   <button
                     type="button"
                     onClick={onGoToAtelier}
-                    className={styles.subActionBtn}
+                    className={styles.storyBtnOutline}
                   >
-                    <Palette size={13} />
-                    <span>Customize in Atelier</span>
+                    <Palette size={14} />
+                    <span>Customize in Saree Atelier</span>
                   </button>
                 )}
               </div>
@@ -285,141 +180,6 @@ export default function WorkspaceHeritageView({ onGoToCollections, onGoToAtelier
           </article>
         ))}
       </div>
-
-      {filteredTraditions.length === 0 && (
-        <div style={{ textAlign: "center", padding: "4rem 2rem", background: "rgba(22, 5, 11, 0.5)", borderRadius: "4px", border: "1px solid rgba(180, 154, 97, 0.2)" }}>
-          <p style={{ color: "var(--color-champagne)", fontFamily: "var(--font-editorial)", fontSize: "1.2rem", fontStyle: "italic" }}>
-            No handloom traditions matched your search &ldquo;{searchQuery}&rdquo;.
-          </p>
-          <button
-            type="button"
-            onClick={() => { setSelectedRegion("all"); setSearchQuery(""); }}
-            className="btn-outline"
-            style={{ marginTop: "1rem" }}
-          >
-            View All 14 State Traditions
-          </button>
-        </div>
-      )}
-
-      {/* ============================================================ */}
-      {/* 5-STAGE LOOM ANATOMY & MAKING PROCESS MODAL                  */}
-      {/* ============================================================ */}
-      {activeModalTradition && (
-        <div 
-          className={styles.modalBackdrop}
-          onClick={() => setActiveModalTradition(null)}
-          role="dialog"
-          aria-modal="true"
-        >
-          <div 
-            className={styles.modalBox}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              type="button"
-              className={styles.modalCloseBtn}
-              onClick={() => setActiveModalTradition(null)}
-              aria-label="Close"
-            >
-              <X size={20} />
-            </button>
-
-            <div style={{ borderBottom: "1px solid rgba(180, 154, 97, 0.25)", paddingBottom: "1rem" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
-                <MapPin size={15} className="text-gold" />
-                <span style={{ fontSize: "0.78rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--color-gold)" }}>
-                  {activeModalTradition.state} Handloom Masterclass
-                </span>
-              </div>
-              <h3 style={{ fontFamily: "var(--font-serif)", fontSize: "1.6rem", color: "var(--color-ivory)", margin: "0.25rem 0" }}>
-                {activeModalTradition.sareeName}
-              </h3>
-              <p style={{ color: "var(--color-champagne)", fontStyle: "italic", fontSize: "0.95rem" }}>
-                Detailed technical breakdown of the traditional making process in {activeModalTradition.cluster}.
-              </p>
-            </div>
-
-            <div className={styles.stepPipeline}>
-              <div className={styles.stepItem}>
-                <div className={styles.stepNumber}>1</div>
-                <div className={styles.stepContent}>
-                  <strong>Stage 1: Sericulture & Filament Harvesting</strong>
-                  <p>
-                    Reeling unadulterated cocoon filaments. For {activeModalTradition.sareeName}, weavers select {activeModalTradition.yarnSpec}. The raw silk is degummed in natural warm water baths to reveal its high-luster protein fibroin.
-                  </p>
-                </div>
-              </div>
-
-              <div className={styles.stepItem}>
-                <div className={styles.stepNumber}>2</div>
-                <div className={styles.stepContent}>
-                  <strong>Stage 2: Sacred Pre-Weave Dyeing & Math Calculations</strong>
-                  <p>
-                    Yarns are stretched on wooden pegs and immersed in boiling vegetable or Swiss azo-free vat dyes. In traditions like Patola and Sambalpuri, yarns undergo multi-stage resist-tying with cotton strings before dyeing.
-                  </p>
-                </div>
-              </div>
-
-              <div className={styles.stepItem}>
-                <div className={styles.stepNumber}>3</div>
-                <div className={styles.stepContent}>
-                  <strong>Stage 3: Setting Up the {activeModalTradition.loomType}</strong>
-                  <p>
-                    Over 5,000 to 12,000 individual warp threads are threaded through heald eyes and reed dents by hand. Traditional Jala or Jacquard punch cards are drafted to translate motifs like {activeModalTradition.motifs.slice(0, 3).join(", ")}.
-                  </p>
-                </div>
-              </div>
-
-              <div className={styles.stepItem}>
-                <div className={styles.stepNumber}>4</div>
-                <div className={styles.stepContent}>
-                  <strong>Stage 4: {activeModalTradition.weaveTechnique}</strong>
-                  <p>
-                    {activeModalTradition.techniqueSummary} Dedicated hand throwing ensures uniform beaten tension without uneven warp pull.
-                  </p>
-                </div>
-              </div>
-
-              <div className={styles.stepItem}>
-                <div className={styles.stepNumber}>5</div>
-                <div className={styles.stepContent}>
-                  <strong>Stage 5: Silver-Gold Assaying & Silk Mark Certification</strong>
-                  <p>
-                    The metallic zari ({activeModalTradition.zariSpec}) is burnished with smooth agate stone to reveal pure golden luster. Each completed heirloom receives a government Silk Mark authenticity QR tag.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div style={{ display: "flex", gap: 12, justifyContent: "flex-end", borderTop: "1px solid rgba(180, 154, 97, 0.2)", paddingTop: "1.25rem" }}>
-              <button
-                type="button"
-                className="btn-outline"
-                onClick={() => setActiveModalTradition(null)}
-                style={{ padding: "10px 20px", fontSize: "0.8rem" }}
-              >
-                Close Masterclass
-              </button>
-
-              {onGoToAtelier && (
-                <button
-                  type="button"
-                  className="btn-primary"
-                  onClick={() => {
-                    setActiveModalTradition(null);
-                    onGoToAtelier();
-                  }}
-                  style={{ padding: "10px 22px", fontSize: "0.8rem" }}
-                >
-                  <Palette size={15} />
-                  <span>Customize in Atelier</span>
-                </button>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
