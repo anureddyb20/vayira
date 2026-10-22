@@ -46,7 +46,7 @@ export default function VayiraUnifiedExperience() {
   const [parted, setParted] = useState(false);
   
   // Left Sidebar active section: 'heritage' | 'collections' | 'atelier' | 'tryon' | 'portfolio'
-  const [activeSection, setActiveSection] = useState("collections");
+  const [activeSection, setActiveSection] = useState("heritage");
 
   // Sign In To Explore Modal state & Demo Credentials
   const [isSignInOpen, setIsSignInOpen] = useState(false);
@@ -81,7 +81,7 @@ export default function VayiraUnifiedExperience() {
     setLoginError("");
   };
 
-  // Form Submit Sign In
+  // Form Submit Sign In - Navigate straight to 2. Heritage & Craft
   const handleModalSignIn = async (e) => {
     if (e) e.preventDefault();
     if (!loginEmail) return;
@@ -91,7 +91,7 @@ export default function VayiraUnifiedExperience() {
     try {
       await signIn(loginEmail, loginPassword || "demo123", "Maharani Radhika Devi");
       setIsSignInOpen(false);
-      setActiveSection("collections");
+      setActiveSection("heritage");
       setStage("workspace");
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (err) {
@@ -101,14 +101,14 @@ export default function VayiraUnifiedExperience() {
     }
   };
 
-  // Instant 1-Click Demo Login
+  // Instant 1-Click Demo Login - Navigate straight to 2. Heritage & Craft
   const handleQuickDemoAccess = async (name = "Maharani Radhika Devi", email = "radhika.devi@vayira.com") => {
     setLoginLoading(true);
     setLoginError("");
     try {
       await signIn(email, "demo123", name);
       setIsSignInOpen(false);
-      setActiveSection("collections");
+      setActiveSection("heritage");
       setStage("workspace");
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (err) {
@@ -118,7 +118,7 @@ export default function VayiraUnifiedExperience() {
     }
   };
 
-  // Registration handler
+  // Registration handler - Navigate straight to 2. Heritage & Craft
   const handleModalRegister = async (e) => {
     e.preventDefault();
     if (!loginEmail) return;
@@ -128,7 +128,7 @@ export default function VayiraUnifiedExperience() {
     try {
       await signUp(loginEmail, loginPassword || "demo123", registerName || "Royal Patron");
       setIsSignInOpen(false);
-      setActiveSection("collections");
+      setActiveSection("heritage");
       setStage("workspace");
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (err) {
