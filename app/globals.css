@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
 :root {
   /* VAYIRA Royal Palette */
   --color-burgundy: #35131D;
@@ -26,6 +28,9 @@
   --grad-royal-overlay: linear-gradient(180deg, rgba(32, 7, 15, 0.2) 0%, rgba(32, 7, 15, 0.85) 100%);
 
   /* Typography */
+  --font-cinzel: 'Cinzel', serif;
+  --font-cormorant: 'Cormorant Garamond', Georgia, serif;
+  --font-sans-body: 'Plus Jakarta Sans', system-ui, sans-serif;
   --font-serif: var(--font-cinzel), 'Cinzel', serif;
   --font-editorial: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
   --font-sans: var(--font-sans-body), 'Plus Jakarta Sans', system-ui, sans-serif;
