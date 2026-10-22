@@ -199,28 +199,6 @@ export default function VayiraUnifiedExperience() {
                   </span>
                 </div>
               </div>
-
-              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                <button
-                  type="button"
-                  onClick={() => setStage("reveal")}
-                  className="btn-outline"
-                  style={{ padding: "8px 16px", fontSize: "0.75rem" }}
-                >
-                  <RotateCcw size={13} />
-                  <span>Replay Curtain Opening</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={handleProceedToSignIn}
-                  className="btn-primary"
-                  style={{ padding: "8px 20px", fontSize: "0.8rem" }}
-                >
-                  <KeyRound size={14} />
-                  <span>Sign In (Demo)</span>
-                </button>
-              </div>
             </div>
           </header>
 
@@ -314,145 +292,225 @@ export default function VayiraUnifiedExperience() {
       )}
 
       {/* ============================================================ */}
-      {/* STEP 3: THE SIGN IN PAGE (DEMO ACCESS TO EXPLORE OPTIONS)    */}
+      {/* SIGN IN TO EXPLORE MODAL (WITH 1-CLICK DEMO CREDENTIALS)     */}
       {/* ============================================================ */}
-      {stage === "signin" && (
-        <div className={styles.signInScreen}>
-          {/* Top navigation */}
-          <div className={styles.signInTopNav}>
+      {isSignInOpen && (
+        <div 
+          className={styles.modalBackdrop}
+          onClick={() => setIsSignInOpen(false)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <div 
+            className={styles.signInModal}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
             <button
               type="button"
-              onClick={() => setStage("intro")}
-              style={{
-                background: "none",
-                border: "none",
-                color: "var(--color-champagne)",
-                cursor: "pointer",
-                fontSize: "0.85rem",
-                display: "flex",
-                alignItems: "center",
-                gap: 8
-              }}
+              onClick={() => setIsSignInOpen(false)}
+              className={styles.modalCloseBtn}
+              aria-label="Close Modal"
             >
-              <span>← Back to Introduction</span>
+              <X size={20} />
             </button>
 
-            <button
-              type="button"
-              onClick={() => setStage("reveal")}
-              style={{
-                background: "none",
-                border: "none",
-                color: "var(--color-stone)",
-                cursor: "pointer",
-                fontSize: "0.78rem",
-                display: "flex",
-                alignItems: "center",
-                gap: 6
-              }}
-            >
-              <RotateCcw size={12} />
-              <span>Replay Opening Screen</span>
-            </button>
-          </div>
-
-          <div className={`container ${styles.signInContainer}`}>
-            <div style={{ textAlign: "center", marginBottom: "2rem" }}>
-              <div style={{ display: "inline-block", marginBottom: "1rem" }}>
-                <VayiraCrest size={56} />
+            {/* Modal Header */}
+            <div className={styles.modalHeader}>
+              <div className={styles.modalCrest}>
+                <VayiraCrest size={48} />
               </div>
-              <span className="editorial-label" style={{ color: "var(--color-gold)" }}>
-                <KeyRound size={14} className="text-gold" />
+              <div className={styles.modalBadge}>
+                <KeyRound size={13} className="text-gold" />
                 <span>Order Step 01 • Royal Patron Authentication</span>
-              </span>
-              <h2 className={styles.signInHeading}>
-                Sign In to Explore VAYIRA
-              </h2>
-              <p className={styles.signInSubheading}>
-                Select a 1-Click Demo persona below to unlock the full Silk House workspace with Left Sidebar navigation:
+              </div>
+              <h2 className={styles.modalTitle}>Sign In to Explore VAYIRA</h2>
+              <p className={styles.modalSubtitle}>
+                Unlock all 8 royal collections, bespoke saree atelier customizer, and AI virtual try-on fitting studio.
               </p>
             </div>
 
-            {/* 1-Click Preset Personas */}
-            <div className={styles.personaGrid}>
-              {/* Persona 1: Maharani Radhika Devi */}
-              <div className={styles.personaCard}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1rem" }}>
-                  <span className={styles.personaTag}>Royal Patron Persona</span>
-                  <Crown size={22} className="text-gold" />
-                </div>
-                <h3 className={styles.personaName}>Maharani Radhika Devi</h3>
-                <span className={styles.personaRole}>radhika.devi@vayira.com</span>
-                <p className={styles.personaDesc}>
-                  Full royal patron access to bridal heirlooms, bespoke customizer commissions, and AI digital try-on studio.
-                </p>
-
-                <button
-                  type="button"
-                  onClick={() => handleDemoSignIn("Maharani Radhika Devi", "radhika.devi@vayira.com", "collections")}
-                  className="btn-primary"
-                  style={{ width: "100%", padding: "14px", marginTop: "1.25rem" }}
-                >
-                  <KeyRound size={16} />
-                  <span>Sign In as Maharani Radhika Devi</span>
-                  <ArrowRight size={16} />
-                </button>
-              </div>
-
-              {/* Persona 2: Senior Master Curator */}
-              <div className={styles.personaCard} style={{ borderColor: "rgba(23, 61, 50, 0.9)" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1rem" }}>
-                  <span className={styles.personaTag} style={{ color: "#86efac", background: "rgba(23, 61, 50, 0.4)" }}>
-                    Atelier Concierge Persona
-                  </span>
-                  <ShieldCheck size={22} className="text-gold" />
-                </div>
-                <h3 className={styles.personaName}>Senior Master Curator</h3>
-                <span className={styles.personaRole}>curator@vayira.com</span>
-                <p className={styles.personaDesc}>
-                  Atelier oversight access to inspect all 8 collection archives, fabric technical parameters, and loom weave schedules.
-                </p>
-
-                <button
-                  type="button"
-                  onClick={() => handleDemoSignIn("Senior Master Curator", "curator@vayira.com", "collections")}
-                  className="btn-primary"
-                  style={{ width: "100%", padding: "14px", marginTop: "1.25rem", background: "linear-gradient(135deg, #173d32 0%, #0d241d 100%)", borderColor: "#86efac" }}
-                >
-                  <KeyRound size={16} />
-                  <span>Sign In as Master Curator</span>
-                  <ArrowRight size={16} />
-                </button>
-              </div>
+            {/* Auth Tab Switcher */}
+            <div className={styles.authTabs}>
+              <button
+                type="button"
+                className={`${styles.authTabBtn} ${authTab === "signin" ? styles.activeTab : ""}`}
+                onClick={() => { setAuthTab("signin"); setLoginError(""); }}
+              >
+                <KeyRound size={15} />
+                <span>Patron Sign In</span>
+              </button>
+              <button
+                type="button"
+                className={`${styles.authTabBtn} ${authTab === "register" ? styles.activeTab : ""}`}
+                onClick={() => { setAuthTab("register"); setLoginError(""); }}
+              >
+                <Sparkles size={15} />
+                <span>New Registration</span>
+              </button>
             </div>
 
-            {/* Custom Name / Email Option */}
-            <div className={styles.customFormBox}>
-              <span className="editorial-label" style={{ fontSize: "0.72rem", marginBottom: "0.75rem", display: "block", textAlign: "center" }}>
-                Or Sign In with Your Custom Name & Email
-              </span>
-              <form onSubmit={handleCustomSignIn} className={styles.customForm}>
-                <input
-                  type="text"
-                  placeholder="Your Name (e.g. Maharani Priyadarshini)"
-                  value={customName}
-                  onChange={(e) => setCustomName(e.target.value)}
-                  className={styles.customInput}
-                />
-                <input
-                  type="email"
-                  required
-                  placeholder="Your Email Address"
-                  value={customEmail}
-                  onChange={(e) => setCustomEmail(e.target.value)}
-                  className={styles.customInput}
-                />
-                <button type="submit" className="btn-primary" style={{ padding: "12px 24px", whiteSpace: "nowrap" }}>
-                  <span>Enter Workspace</span>
+            {loginError && (
+              <div style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 8,
+                padding: "10px 14px",
+                backgroundColor: "rgba(239, 68, 68, 0.15)",
+                border: "1px solid rgba(239, 68, 68, 0.4)",
+                color: "#fca5a5",
+                fontSize: "0.82rem",
+                borderRadius: "3px",
+                marginBottom: "1rem"
+              }}>
+                <AlertCircle size={16} />
+                <span>{loginError}</span>
+              </div>
+            )}
+
+            {/* SIGN IN TAB */}
+            {authTab === "signin" && (
+              <div>
+                {/* 1-Click Demo Credentials Button Banner */}
+                <div className={styles.demoBanner}>
+                  <div className={styles.demoBannerInfo}>
+                    <Crown size={18} className="text-gold" />
+                    <div>
+                      <strong>Quick Patron Access</strong>
+                      <span>Explore effortlessly with demo credentials</span>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleFillDemoCredentials}
+                    className={styles.demoFillBtn}
+                    id="btn-demo-credentials"
+                  >
+                    <KeyRound size={14} />
+                    <span>Demo Credentials</span>
+                  </button>
+                </div>
+
+                {demoLoaded && (
+                  <div className={styles.demoIndicatorAlert}>
+                    <CheckCircle2 size={16} />
+                    <span>Demo credentials loaded: Maharani Radhika Devi (Patron Access)</span>
+                  </div>
+                )}
+
+                <form onSubmit={handleModalSignIn}>
+                  <div className={styles.inputGroup}>
+                    <label className={styles.inputLabel}>Patron Email Address</label>
+                    <div className={styles.inputFieldWrapper}>
+                      <Mail size={16} className="text-stone" />
+                      <input
+                        type="email"
+                        required
+                        placeholder="e.g. radhika.devi@vayira.com"
+                        value={loginEmail}
+                        onChange={(e) => {
+                          setLoginEmail(e.target.value);
+                          setDemoLoaded(false);
+                        }}
+                        className={styles.inputField}
+                      />
+                    </div>
+                  </div>
+
+                  <div className={styles.inputGroup}>
+                    <label className={styles.inputLabel}>Security Password</label>
+                    <div className={styles.inputFieldWrapper}>
+                      <Lock size={16} className="text-stone" />
+                      <input
+                        type="password"
+                        required
+                        placeholder="••••••••"
+                        value={loginPassword}
+                        onChange={(e) => setLoginPassword(e.target.value)}
+                        className={styles.inputField}
+                      />
+                    </div>
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={loginLoading}
+                    className={`btn-primary ${styles.submitBtn}`}
+                  >
+                    <span>{loginLoading ? "Authenticating Patron..." : "Sign In & Enter Silk House"}</span>
+                    <ArrowRight size={16} />
+                  </button>
+                </form>
+
+                {/* 1-Click Instant Enter Link */}
+                <button
+                  type="button"
+                  onClick={() => handleQuickDemoAccess("Maharani Radhika Devi", "radhika.devi@vayira.com")}
+                  className={styles.quickInstantBtn}
+                >
+                  ⚡ Or 1-Click Instant Enter as Maharani Radhika Devi
+                </button>
+              </div>
+            )}
+
+            {/* REGISTRATION TAB */}
+            {authTab === "register" && (
+              <form onSubmit={handleModalRegister}>
+                <div className={styles.inputGroup}>
+                  <label className={styles.inputLabel}>Patron Full Name</label>
+                  <div className={styles.inputFieldWrapper}>
+                    <User size={16} className="text-stone" />
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Maharani Priyadarshini"
+                      value={registerName}
+                      onChange={(e) => setRegisterName(e.target.value)}
+                      className={styles.inputField}
+                    />
+                  </div>
+                </div>
+
+                <div className={styles.inputGroup}>
+                  <label className={styles.inputLabel}>Patron Email Address</label>
+                  <div className={styles.inputFieldWrapper}>
+                    <Mail size={16} className="text-stone" />
+                    <input
+                      type="email"
+                      required
+                      placeholder="e.g. priya@heritage.com"
+                      value={loginEmail}
+                      onChange={(e) => setLoginEmail(e.target.value)}
+                      className={styles.inputField}
+                    />
+                  </div>
+                </div>
+
+                <div className={styles.inputGroup}>
+                  <label className={styles.inputLabel}>Security Password</label>
+                  <div className={styles.inputFieldWrapper}>
+                    <Lock size={16} className="text-stone" />
+                    <input
+                      type="password"
+                      required
+                      placeholder="••••••••"
+                      value={loginPassword}
+                      onChange={(e) => setLoginPassword(e.target.value)}
+                      className={styles.inputField}
+                    />
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={loginLoading}
+                  className={`btn-primary ${styles.submitBtn}`}
+                >
+                  <span>{loginLoading ? "Registering Patron..." : "Create Account & Enter Silk House"}</span>
                   <ArrowRight size={16} />
                 </button>
               </form>
-            </div>
+            )}
           </div>
         </div>
       )}
