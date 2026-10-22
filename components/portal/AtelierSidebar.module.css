@@ -1,5 +1,5 @@
 .sidebar {
-  width: 290px;
+  width: 76px;
   height: 100vh;
   position: sticky;
   top: 0;
@@ -7,10 +7,11 @@
   border-right: 1px solid rgba(180, 154, 97, 0.3);
   display: flex;
   flex-direction: column;
-  padding: 1.75rem 1.25rem;
-  z-index: 100;
+  align-items: center;
+  padding: 1.5rem 0.6rem;
+  z-index: 1000;
   flex-shrink: 0;
-  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
+  box-shadow: 8px 0 25px rgba(0, 0, 0, 0.6);
 }
 
 @media (max-width: 900px) {
@@ -18,151 +19,326 @@
     width: 100%;
     height: auto;
     position: relative;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
     border-right: none;
     border-bottom: 1px solid rgba(180, 154, 97, 0.3);
-    padding: 1.25rem;
   }
 }
 
+/* Brand Area: Crest Only with Tooltip */
 .brandArea {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding-bottom: 1.5rem;
+  justify-content: center;
+  padding-bottom: 1.25rem;
   border-bottom: 1px solid rgba(180, 154, 97, 0.2);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
+  width: 100%;
+  cursor: pointer;
 }
 
-.brandTitle {
+.brandTooltip {
+  position: absolute;
+  left: calc(100% + 14px);
+  top: 50%;
+  transform: translateY(-50%) translateX(-6px);
+  background: #240712;
+  border: 1px solid var(--color-gold);
+  border-radius: 4px;
+  padding: 6px 12px;
+  color: var(--color-gold-light);
   font-family: var(--font-serif);
-  font-size: 1.35rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  color: var(--color-gold);
-  line-height: 1.1;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+  z-index: 1100;
 }
 
-.brandSubtitle {
-  font-family: var(--font-editorial);
-  font-style: italic;
-  font-size: 0.72rem;
-  color: var(--color-champagne);
-  display: block;
+.brandTooltip::before {
+  content: "";
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent var(--color-gold) transparent transparent;
 }
 
+.brandArea:hover .brandTooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* Patron Crown Badge with Tooltip */
 .patronBadge {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: rgba(53, 19, 29, 0.7);
   border: 1px solid rgba(180, 154, 97, 0.35);
-  border-radius: 4px;
-  padding: 12px;
-  margin-bottom: 1.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
 }
 
-.patronInfo {
+.patronBadge:hover {
+  border-color: var(--color-gold);
+  background: rgba(74, 24, 39, 0.9);
+  box-shadow: 0 0 15px rgba(180, 154, 97, 0.25);
+}
+
+.patronTooltip {
+  position: absolute;
+  left: calc(100% + 14px);
+  top: 50%;
+  transform: translateY(-50%) translateX(-6px);
+  background: #240712;
+  border: 1px solid var(--color-gold);
+  border-radius: 4px;
+  padding: 8px 12px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8);
+  z-index: 1100;
   display: flex;
   flex-direction: column;
   gap: 2px;
-  overflow: hidden;
 }
 
-.patronName {
+.patronTooltip::before {
+  content: "";
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent var(--color-gold) transparent transparent;
+}
+
+.patronTooltipName {
   font-family: var(--font-serif);
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   color: var(--color-ivory);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
-.patronRole {
-  font-family: var(--font-sans);
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
+.patronTooltipRole {
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-gold-light);
+  color: var(--color-gold);
 }
 
+.patronBadge:hover .patronTooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* Nav Menu: Icon-Only with Hover Tooltips */
 .navMenu {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
   flex: 1;
 }
 
+@media (max-width: 900px) {
+  .navMenu {
+    flex-direction: row;
+    justify-content: center;
+    gap: 8px;
+  }
+}
+
 .navItem {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 14px;
-  border-radius: 3px;
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
   border: 1px solid transparent;
   background: transparent;
-  color: var(--color-stone-light);
-  font-family: var(--font-sans);
-  font-size: 0.85rem;
-  letter-spacing: 0.08em;
-  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  width: 100%;
 }
 
 .navItem:hover {
-  background: rgba(180, 154, 97, 0.1);
-  color: var(--color-ivory);
-  border-color: rgba(180, 154, 97, 0.25);
-  transform: translateX(3px);
+  background: rgba(180, 154, 97, 0.12);
+  border-color: rgba(180, 154, 97, 0.35);
+  transform: scale(1.05);
 }
 
 .navItem.active {
-  background: linear-gradient(90deg, rgba(74, 24, 39, 0.85) 0%, rgba(53, 19, 29, 0.5) 100%);
-  color: var(--color-gold-light);
+  background: linear-gradient(135deg, rgba(74, 24, 39, 0.95) 0%, rgba(53, 19, 29, 0.8) 100%);
   border: 1px solid var(--color-gold);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
-  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 0 10px rgba(180, 154, 97, 0.2);
 }
 
-.badgeTag {
-  margin-left: auto;
+.notificationBadge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: var(--color-gold);
+  color: #150308;
+  font-size: 0.62rem;
+  font-weight: 700;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+/* Floating Tooltip to the Right of the Icon */
+.itemTooltip {
+  position: absolute;
+  left: calc(100% + 14px);
+  top: 50%;
+  transform: translateY(-50%) translateX(-6px);
+  background: #240712;
+  border: 1px solid var(--color-gold);
+  border-radius: 4px;
+  padding: 8px 14px;
+  color: var(--color-ivory);
+  font-family: var(--font-serif);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8), 0 0 15px rgba(180, 154, 97, 0.15);
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.itemTooltip::before {
+  content: "";
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent var(--color-gold) transparent transparent;
+}
+
+.tooltipBadge {
   font-size: 0.65rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   padding: 2px 6px;
   border-radius: 2px;
-  background: rgba(180, 154, 97, 0.2);
+  background: rgba(180, 154, 97, 0.25);
   color: var(--color-gold);
 }
 
+.navItem:hover .itemTooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* Footer Actions: Icon Only with Tooltip */
 .footerActions {
-  padding-top: 1.25rem;
+  padding-top: 1rem;
   border-top: 1px solid rgba(180, 154, 97, 0.2);
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 10px;
+  width: 100%;
 }
 
-.signOutBtn {
+@media (max-width: 900px) {
+  .footerActions {
+    flex-direction: row;
+    padding-top: 0;
+    border-top: none;
+  }
+}
+
+.actionBtn {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 4px;
   background: transparent;
   border: 1px solid rgba(180, 154, 97, 0.2);
   color: var(--color-stone);
-  padding: 8px 12px;
-  border-radius: 2px;
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.actionBtn:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold-light);
+  background: rgba(180, 154, 97, 0.1);
+  transform: scale(1.05);
+}
+
+.actionBtn:hover .itemTooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0);
+}
+
+.signOutBtn {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 4px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .signOutBtn:hover {
-  color: #ff9999;
-  border-color: rgba(255, 100, 100, 0.4);
+  background: rgba(239, 68, 68, 0.2);
+  border-color: #ef4444;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.signOutBtn:hover .itemTooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0);
 }

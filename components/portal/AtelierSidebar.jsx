@@ -12,7 +12,8 @@ import {
   Bookmark, 
   LogOut, 
   Crown,
-  RotateCcw
+  RotateCcw,
+  Undo2
 } from "lucide-react";
 import styles from "./AtelierSidebar.module.css";
 
@@ -31,31 +32,28 @@ export default function AtelierSidebar({ activeSection, onSelectSection, onRepla
 
   return (
     <aside className={styles.sidebar} aria-label="Atelier Left Navigation">
-      {/* Brand Header */}
-      <div className={styles.brandArea}>
-        <VayiraCrest size={36} />
-        <div>
-          <span className={styles.brandTitle}>VAYIRA</span>
-          <span className={styles.brandSubtitle}>A Royal Indian Silk House</span>
+      {/* Brand Header - Crest Icon with Hover Tooltip */}
+      <div className={styles.brandArea} onClick={onReturnToIntro} title="VAYIRA — A Royal Indian Silk House">
+        <VayiraCrest size={34} />
+        <div className={styles.brandTooltip}>
+          <span>VAYIRA • Royal Silk House</span>
         </div>
       </div>
 
-      {/* Royal Patron Badge */}
+      {/* Royal Patron Badge - Crown Icon with Hover Tooltip */}
       <div className={styles.patronBadge}>
-        <div style={{ display: "flex", alignItems: "center", gap: 10, overflow: "hidden" }}>
-          <Crown size={20} className="text-gold" style={{ flexShrink: 0 }} />
-          <div className={styles.patronInfo}>
-            <span className={styles.patronName}>
-              {user?.user_metadata?.full_name || "Maharani Radhika Devi"}
-            </span>
-            <span className={styles.patronRole}>
-              Royal Patron • Demo Active
-            </span>
-          </div>
+        <Crown size={20} className="text-gold" />
+        <div className={styles.patronTooltip}>
+          <span className={styles.patronTooltipName}>
+            {user?.user_metadata?.full_name || "Maharani Radhika Devi"}
+          </span>
+          <span className={styles.patronTooltipRole}>
+            Royal Patron • Verified
+          </span>
         </div>
       </div>
 
-      {/* Navigation Menu */}
+      {/* Navigation Menu - Icon Only with Hover Tooltip showing Tab Name */}
       <nav className={styles.navMenu}>
         {menuItems.map((item) => {
           const Icon = item.icon;
@@ -66,56 +64,54 @@ export default function AtelierSidebar({ activeSection, onSelectSection, onRepla
               type="button"
               className={`${styles.navItem} ${isActive ? styles.active : ""}`}
               onClick={() => onSelectSection(item.id)}
+              aria-label={item.label}
             >
-              <Icon size={18} className={isActive ? "text-gold" : "text-stone"} />
-              <span>{item.label}</span>
-              {item.badge && <span className={styles.badgeTag}>{item.badge}</span>}
+              <Icon size={21} className={isActive ? "text-gold" : "text-stone"} />
+              
+              {/* Notification badge if any */}
+              {item.badge && item.id === "cart" && (
+                <span className={styles.notificationBadge}>{item.badge}</span>
+              )}
+
+              {/* Tooltip visible when cursor is on the icon */}
+              <div className={styles.itemTooltip}>
+                <span>{item.label}</span>
+                {item.badge && <span className={styles.tooltipBadge}>{item.badge}</span>}
+              </div>
             </button>
           );
         })}
       </nav>
 
-      {/* Footer Actions */}
+      {/* Footer Actions - Icons Only with Hover Tooltips */}
       <div className={styles.footerActions}>
+        {/* Return to Intro */}
         <button
           type="button"
           onClick={onReturnToIntro}
-          style={{
-            background: "none",
-            border: "none",
-            color: "var(--color-stone)",
-            fontSize: "0.75rem",
-            letterSpacing: "0.08em",
-            cursor: "pointer",
-            textAlign: "center",
-            padding: "4px 0"
-          }}
+          className={styles.actionBtn}
+          aria-label="Return to Brand Introduction"
         >
-          ← Return to Brand Introduction
+          <Undo2 size={17} />
+          <div className={styles.itemTooltip}>
+            <span>Return to Brand Introduction</span>
+          </div>
         </button>
 
+        {/* Replay Royal Reveal */}
         <button
           type="button"
           onClick={onReplayReveal}
-          style={{
-            background: "none",
-            border: "none",
-            color: "var(--color-gold)",
-            fontSize: "0.75rem",
-            letterSpacing: "0.08em",
-            cursor: "pointer",
-            textAlign: "center",
-            padding: "4px 0",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: 4
-          }}
+          className={styles.actionBtn}
+          aria-label="Replay Royal Reveal Opening"
         >
-          <RotateCcw size={12} />
-          <span>Replay Royal Reveal Opening</span>
+          <RotateCcw size={16} />
+          <div className={styles.itemTooltip}>
+            <span>Replay Royal Reveal Opening</span>
+          </div>
         </button>
 
+        {/* Exit / Sign Out */}
         <button
           type="button"
           onClick={() => {
@@ -123,9 +119,12 @@ export default function AtelierSidebar({ activeSection, onSelectSection, onRepla
             onReturnToIntro();
           }}
           className={styles.signOutBtn}
+          aria-label="Exit / Sign Out"
         >
-          <LogOut size={14} />
-          <span>Exit / Sign Out</span>
+          <LogOut size={16} />
+          <div className={styles.itemTooltip} style={{ borderColor: "#ef4444" }}>
+            <span style={{ color: "#fca5a5" }}>Exit / Sign Out</span>
+          </div>
         </button>
       </div>
     </aside>
